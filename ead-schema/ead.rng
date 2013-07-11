@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- 
 	EAD 2002 Relax NG Schema
 	Version: 200804 Release
@@ -17,7 +17,7 @@
 	
 	Editors (SAA/EADWG/EAD Schema Working Group):
 	
-	Francoise Bourdon (Biblioth�que nationale de France)
+	Francoise Bourdon (BibliothÃ¨que nationale de France)
 	Terry Catapano (Columbia University)
 	Jerry McDonough (University of Illinois)
 	Lee Mandell (New York University)
