@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+    xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    
+    <dc:title>EAD 2002 RELAXNG extension</dc:title>
+    <dc:author>Steven D. Majewski</dc:author>
+    <dc:description>
+        Extension to LOC EAD 2002 RELAXNG schema. http://www.loc.gov/ead/eadschema.html
+        
+        Although, in theory, the W3C/XSD and the RELAXNG versions of the EAD schema should
+        should both work identically(*1), in practice some files that validate under XSD fail
+        under RELAXNG. 
+        
+        (*1) http://www.loc.gov/ead/eadschema.html:
+        "The RNG version is the maintenance and therefore authoritative version.
+        The XSD version is derived from the RNG using Trang, with minor manual editing subsequent editing."
+        
+        Some XSD schema conforming files have a xsi:schemaLocation attribute on the root ead element.
+        This is not explicitly defined in ead.xsd or ead.rng, but is inherited from the XSD schema
+        framework (*2). Those files validate against ead.xsd, but fail to validate against ead.rng.
+        
+        This extension adds the xsi:schemaLocation attribute to the allowed attributes. 
+        
+        
+        (*2) http://www.w3.org/TR/xmlschema-1/#Instance_Document_Constructions:
+        XML Schema: Structures also defines several attributes for direct use in
+        any XML documents. These attributes are in a different namespace, which
+        has the namespace name http://www.w3.org/2001/XMLSchema-instance. For
+        brevity, the text and examples in this specification use the prefix xsi:
+        to stand for this latter namespace; in practice, any prefix can be used.
+        All schema processors have appropriate attribute declarations for these
+        attributes built in, see Attribute Declaration for the 'type' attribute
+        (§3.2.7), Attribute Declaration for the 'nil' attribute (§3.2.7),
+        Attribute Declaration for the 'schemaLocation' attribute (§3.2.7) and
+        Attribute Declaration for the 'noNamespaceSchemaLocation' attribute
+        (§3.2.7).
+        
+        
+    </dc:description>
+    
+    <include href="ead.rng" />
+    
+    <start combine="choice">   
+       <ref name="ead" />
+    </start>
+
+    <define name="a.common" combine="interleave">
+        <optional>
+            <ref name="xsi.schemaLocation" />
+        </optional>
+    </define>
+
+    <define name="xsi.schemaLocation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+        <attribute name="xsi:schemaLocation">
+            <data type="anyURI"/>
+        </attribute>
+    </define>
+    
+
+</grammar>
