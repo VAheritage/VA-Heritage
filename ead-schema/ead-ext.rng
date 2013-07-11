@@ -53,6 +53,9 @@
         <optional>
             <ref name="xsi.schemaLocation" />
         </optional>
+        <optional>
+            <ref name="xmlbase" />
+        </optional>
     </define>
 
     <define name="xsi.schemaLocation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
@@ -61,5 +64,10 @@
         </attribute>
     </define>
     
+    <define name="xmlbase" >
+        <attribute name="xml:base" >
+            <data type="anyURI" />
+        </attribute>
+    </define>
 
 </grammar>
