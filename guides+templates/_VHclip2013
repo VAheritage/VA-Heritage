@@ -1,0 +1,975 @@
+= V5 MultiLine NoSorting TabWidth=30
+
+H=";VERSION HISTORY"
+This is version 4.0 updated on 28 June 2013.
+
+1.3 (19 October):Update render title "italics" to "italic" since text following "italics" would not display.
+1.4 (04 November): Paxer changed to validate against dtd. Fix defitem in Section 1.
+1.5 (06 November): container dtd looking for lc list, NoteTab configured with leading majuscule.
+1.6 (07 November): refix lc list to match, add <p>s to <scopecontent> and <arrangement> tags; also moved latter outside of <did>; changed "other" to "othertype".
+2.0 (17 January 2001): Elimintated extra spaces after each component clip. Also added "Clear Empty Tags" clip which will eliminate empty tags and extra spacing to speed up parsing and perl scripts.
+2.1 (22 January): Added ISO conversion tag. Also moved "box-folder" up in pulldown list. Tweaked pre-upload clips.
+2.2 (30 January) Moved <unitdate> outside of the <unittitle> tag.
+2.3 (09 February) Put <unitdate> back inside <unittitle> tag since it was displaying date and box on same line.
+2.4 (03 April) Changed the title formatting tags to put tags around the text instead of a prompt. Combined clean up tags into one. 
+2.5 (24 April) Added Testing clips to facilitate volume conversions of consistent <dsc>s. Note: still in beta form. Also added the <emph="bold"> tag.
+3.0 (15 June)  Deleted "clean up" tags. Added tree effect to <dsc> elements using indentations. This will be tested on participants to see which they prefer.
+3.1 (11 July)  Changed add <daogrp> tag and added a new entity reference tag.
+3.2 (08 August) Added <abbr>, <persname>, and <geogname> tags to Formatting section.
+3.3 (22 January 2004) Deleted single as date choice.
+3.4 (13 April 2004) Added <list> and <item> tags.  Extended clean up tags function to elminate empty label tags for the <dsc>.
+3.5 (6 March 2006) Reformatted the clip to permit creation of complete EAD guide (eadheader, frontmatter, archdesc, and dsc)
+3.6 (31 March 2006) Add entities clip and altered preferred citation
+3.7 (22 March 2007) Changed coding for copyright symbol
+3.8 (27 February 2008) Corrected level attributes for recordgrp and subgrp
+3.9 (1 August 2011) Removed extra close container tag
+4.0 (28 June 2013) Switch to RELAX-NG schema
+H=" "
+
+
+H=";UNICODE ERRORS"
+These are not definitive. Let me know if you find any yourself.
+
+Unicode error 0x96 --endash
+Unicode error 0x92 --"smart" apostrophe
+Unicode error 0x89 --apostrophe
+Unicode error 0x85 --ellipsis
+Unicode error 0x83 --subscripted period= type of paragraph formatting
+Unicode error 0xbd --fraction (1/2 should be &#x00bd;)
+
+
+H=" "
+
+
+H=";PRE UPLOAD!!!!"
+
+
+H="CLEAN UP <EAD>!!"
+^!Continue This Clip will search for empty tags and delete them as well as any spaces between components.  Continue?
+^!StatusShow Please Wait...
+^!Replace "<scopecontent>^P<p>^P</p>^P</scopecontent>" >> "" WSA
+^!Replace "<arrangement>^P<p>^P</p>^P</arrangement>" >> "" WSA
+^!Replace "<physdesc>^P</physdesc>" >> "" WSA
+^!Replace "<physloc>^P</physloc>" >> "" WSA
+^!Replace "type="Inclusive"" >> "type="inclusive"" WSA
+^!Replace "type="Box"" >> "type="box"" WSA
+^!Replace "<container label="" type="">^P</container>" >> "" WSA
+^!Replace "<unitdate type="">^P</unitdate>" >> "" WSA
+^!Replace "<scopecontent>^P<p></p>^P</scopecontent>" >> "" WSA
+^!Replace "<arrangement>^P<p></p>^P</arrangement>" >> "" WSA
+^!Replace "^P^P" >> "^P" WSA
+^!Replace "^P^P^P" >> "^P" WSA
+^!Replace "^P^P" >> "^P" WSA
+
+^!Replace "<scopecontent>^P^T<p>^P^T</p>^P^T</scopecontent>" >> "" WSA
+^!Replace "<arrangement>^P^T<p>^P^T</p>^P^T</arrangement>" >> "" WSA
+^!Replace "<physdesc>^P^T</physdesc>" >> "" WSA
+^!Replace "<physloc>^P^T</physloc>" >> "" WSA
+^!Replace "<container label="" type="">^P^T</container>" >> "" WSA
+^!Replace "<unitdate type="">^P^T</unitdate>" >> "" WSA
+^!Replace "<scopecontent>^P^T<p></p>^P^T</scopecontent>" >> "" WSA
+^!Replace "<arrangement>^P^T<p></p>^P^T</arrangement>" >> "" WSA
+^!Replace "^P^T^P" >> "^P" WSA
+^!Replace "^P^T^P^T^P" >> "^P" WSA
+^!Replace "^P^T^P" >> "^P" WSA
+
+^!Replace "<scopecontent>^P^T^T<p>^P^T^T</p>^P^T^T</scopecontent>" >> "" WSA
+^!Replace "<arrangement>^P^T^T<p>^P^T^T</p>^P^T^T</arrangement>" >> "" WSA
+^!Replace "<physdesc>^P^T^T</physdesc>" >> "" WSA
+^!Replace "<physloc>^P^T^T</physloc>" >> "" WSA
+^!Replace "<container label="" type="">^P^T^T</container>" >> "" WSA
+^!Replace "<unitdate type="">^P^T^T</unitdate>" >> "" WSA
+^!Replace "<scopecontent>^P^T^T<p></p>^P^T^T</scopecontent>" >> "" WSA
+^!Replace "<arrangement>^P^T^T<p></p>^P^T^T</arrangement>" >> "" WSA
+^!Replace "^P^T^T^P" >> "^P" WSA
+^!Replace "^P^T^T^P^T^T^P" >> "^P" WSA
+^!Replace "^P^T^T^P" >> "^P" WSA
+
+^!Replace "<scopecontent>^P^T^T^T<p>^P^T^T^T</p>^P^T^T^T</scopecontent>" >> "" WSA
+^!Replace "<arrangement>^P^T^T^T<p>^P^T^T^T</p>^P^T^T^T</arrangement>" >> "" WSA
+^!Replace "<physdesc>^P^T^T^T</physdesc>" >> "" WSA
+^!Replace "<physloc>^P^T^T^T</physloc>" >> "" WSA
+^!Replace "<container label="" type="">^P^T^T^T</container>" >> "" WSA
+^!Replace "<unitdate type="">^P^T^T^T</unitdate>" >> "" WSA
+^!Replace "<scopecontent>^P^T^T^T<p></p>^P^T^T^T</scopecontent>" >> "" WSA
+^!Replace "<arrangement>^P^T^T^T<p></p>^P^T^T^T</arrangement>" >> "" WSA
+^!Replace "^P^T^T^T^P" >> "^P" WSA
+^!Replace "^P^T^T^T^P^T^T^T^P" >> "^P" WSA
+^!Replace "^P^T^T^T^P" >> "^P" WSA
+
+^!Replace "<unittitle label="">" >> <unittitle> WSA
+^!Replace "<unitdate type="">" >> <unitdate> WSA
+
+^!Replace "<physloc label="">^P</physloc>" >> "" WSA
+^!Replace "<physloc label="Location">^P</physloc>" >> "" WSA
+^!Replace "<physloc label="Shelf Location">^P</physloc>" >> "" WSA
+^!Replace "<physloc label="Storage Location">^P</physloc>" >> "" WSA
+^!Replace "<abstract label="Abstract">^P</abstract>" >> "" WSA
+^!Replace "<origination label="" encodinganalog="100$a">^P</origination>" >> "" WSA
+^!Replace "<origination label="Creator" encodinganalog="100$a">^P</origination>" >> "" WSA
+^!Replace "<origination label="Collector" encodinganalog="100$a">^P</origination>" >> "" WSA
+^!Replace "^P^P" >> "^P" WSA
+^!Replace "^P^P^P" >> "^P" WSA
+^!Replace "^P^P" >> "^P" WSA
+
+^!Replace "<bioghist encodinganalog="545$a">^P<head>Biographical Information^P</head>^P<p>^P</p>^P</bioghist>" >> "" WSA
+^!Replace "<bioghist encodinganalog="545$a">^P<head>Historical Information^P</head>^P<p>^P</p>^P</bioghist>" >> "" WSA
+^!Replace "<bioghist encodinganalog="545$a">^P<head>^P</head>^P<p>^P</p>^P</bioghist>" >> "" WSA
+^!Replace "<arrangement encodinganalog="351">^P<head>Arrangement^P</head>^P<p>^P</p>^P</arrangement>" >> "" WSA
+^!Replace "^P^P" >> "^P" WSA
+^!Replace "^P^P^P" >> "^P" WSA
+^!Replace "^P^P" >> "^P" WSA
+
+^!Continue This next stage will search for things like &s (ampersands), "smart" quotes, apostrophes, and such in order to replace them with their ISO equivalents. Continue?
+^!Replace "& " >> "&amp; " CWSA
+^!Replace "â" >> "'" WSA
+^!Replace """ >> """ WSA
+^!Replace """ >> """ WSA
+^!Replace "·" >> "..." TWSA
+^!StatusShow Please Wait...
+^!TOOLBAR Save Document
+^!Prompt Done!   Upload and Parse when ready.
+
+
+H=";"
+
+H=";1. <EADHEADER> AND <FRONTMATTER>"
+Section 0 and 1 in the old MU forms.
+
+H="<eadheader> and <frontmatter>"
+
+^!Set %eadid%=vicruh^?[(T=C)Vircuh number, just add number:]; %findaidstatus%=^?[(T=C)Finding Aid Status:==_edited-partial-draft|edited-full-draft|unverified-full-draft|unverified-partial-draft]; %titleproper%=^?[(T=C)A Guide to the (complete titleproper of finding aid) <titleproper>:]; %dates%=^?[(T=C)Dates of collection or papers <date>:]; %titlepropersorttitle%=^?[(T=C)"Sort" title goes here <subtitle>:]; %collectionnumbertype%=^?[(T=C)Accession number or Collection number?==_Accession number|Collection number]; %collectionnumber%=^?[(T=C)Collection number WITHOUT LABEL goes here <num>:]; %author%=^?[(T=C)Author of finding aid <author>:]; %encoder%=^?[(T=C)Encoder of finding aid:]; %encodeddate%=^?[(T=C)Date finding aid encoded (i.e. 14 January 2006):]; %processor%=^?[(T=C)Processor of collection or papers:]; %derivedfrom%=^?[(T=C)EAD finding aid derived from:==_MARC record|MS Word|Database|being created directly into EAD]
+
+<?xml version="1.0"?>
+<?xml-model href="http://www.loc.gov/ead/ead.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<!DOCTYPE ead [
+<!ENTITY address SYSTEM "http://ead.lib.virginia.edu/vivaead/add_con/vcu-tm_address.xml">
+<!ENTITY contact SYSTEM "http://ead.lib.virginia.edu/vivaead/add_con/vcu-tm_contact.xml">
+]>
+<ead xmlns="urn:isbn:1-931666-22-9" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" id="^%eadid%">
+<eadheader audience="internal" langencoding="iso639-2b" findaidstatus="^%findaidstatus%">
+<eadid countrycode="US" mainagencycode="US-ViRCUH">PUBLIC "-//Virginia Commonwealth University::Tompkins-McCaw Library::Special Collections and Archives//TEXT (US::ViRCU-H::^%eadid%::A Guide to the ^%titleproper%, ^%dates%)//EN" "^%eadid%.xml"
+</eadid>
+<filedesc>
+<titlestmt>
+<titleproper>A Guide to the ^%titleproper%, <date>^%dates%</date>
+</titleproper>
+<subtitle id="sort">^%titlepropersorttitle%
+<num type="collectionnumber">^%collectionnumber%
+</num>
+</subtitle>
+<author>^%author%
+</author>
+</titlestmt>
+<publicationstmt>
+<publisher>Virginia Commonwealth University, Tompkins-McCaw
+         Library
+</publisher> &address;
+<date type="publication">&#169; 2011 By Virginia Commonwealth University. All rights reserved.
+</date>
+<p id="usestatement">
+<extref xlink:type="simple" xlink:href="http://www.lib.virginia.edu/speccol/vhp/conditions.html" />
+</p>
+</publicationstmt>
+</filedesc>
+<profiledesc>
+<creation>Machine-readable finding aid derived from ^%derivedfrom%, created by ^%encoder%, <date>^%encodeddate%</date>
+</creation>
+<langusage>Description is in
+<language langcode="eng">English
+</language>
+</langusage>
+</profiledesc>
+</eadheader>
+<frontmatter>
+<titlepage>
+<titleproper>A Guide to the ^%titleproper%, <date>^%dates%</date>
+</titleproper>
+<subtitle>A Collection in <lb/>Special Collections and Archives, Tompkins-McCaw Library
+<num type="Accession Number">^%collectionnumber%
+</num>
+</subtitle>
+<author>^%author%
+</author>
+<p id="logostmt">
+<extptr xlink:actuate="onLoad" xlink:show="embed" xlink:type="simple" xlink:href="http://ead.lib.virginia.edu/vivaead/logos/vcu.jpg"/>
+</p>
+<publisher>Virginia Commonwealth University, Tompkins-McCaw Library
+</publisher>
+<date type="publication">2011
+</date> &contact;
+<list type="deflist">
+<defitem>
+<label>Processed by:
+</label>
+<item>^%processor%
+</item>
+</defitem>
+</list>
+</titlepage>
+</frontmatter>
+
+
+
+H=";"
+
+H=";2. DESCRIPTIVE SUMMARY"
+Upper level <did>.  Overview of Collection
+
+H="Descriptive Summary"
+
+^!Set %title%=^?[(T=C)Title of collection or papers <unittitle> R:]; %dates%=^?[(T=C)Inclusive or bulk dates of collection <unitdate> R:]; %datetype%=^?[(T=C)Inclusive or Bulk?==_inclusive|bulk]; %collectionnumber%=^?[(T=C)Collection/accession number WITHOUT LABEL <unitid> R:]; %collectionnumbertype%=^?[(T=C)Accession number or Collection number?==_Accession number|Collection number]; %physloclabel%=^?[(T=C)Physical Location Label?==_Location|Shelf Location|Storage Location]; %physloc%=^?[(T=C)Physical Location Text <physloc> NR:];%physdesclabel%=^?[(T=C)Physical Description Label?==_Physical Characteristics|Extent|Size|Physical Description]; %physdesc%=^?[(T=C)Extent or volume of collection <physdesc> R:]; %abstract%=^?[(T=C)Abstract <abstract> NR:]; %originationlabel%=^?[(T=C)Creator or Collector?==_Creator|Collector]; %originationencodinganalog%=^?[(T=C)MARC Encoding Analog (100 or 110) for Creator or Collector?==_100$a|110$a]; %origination%=^?[(T=C)Creator or collector of collection <origination> NR:]
+
+<archdesc level="collection">
+<runner placement="footer">Special Collections and Archives,
+      Tompkins-McCaw Library
+</runner>
+<did>
+<head>Descriptive Summary
+</head>
+<repository label="Repository" encodinganalog="852$a">Special Collections and Archives, Tompkins-McCaw Library
+</repository>
+<unittitle label="Title" encodinganalog="245$a">^%title%
+<unitdate type="^%datetype%" label="Date" encodinganalog="245$f">^%dates%
+</unitdate>
+</unittitle>
+<unitid label="Accession Number" encodinganalog="099$a">^%collectionnumber%
+</unitid>
+<physloc label="^%physloclabel%">^%physloc%
+</physloc>
+<physdesc label="Physical Characteristics" encodinganalog="300$a">^%physdesc%.
+</physdesc>
+<langmaterial label="Language">
+<language langcode="eng">English
+</language>
+</langmaterial>
+<abstract label="Abstract">^%abstract%
+</abstract>
+<origination label="^%originationlabel%" encodinganalog="^%originationencodinganalog%">^%origination%
+</origination>
+</did>
+
+
+
+H=";"
+
+H=";3. REQUIRED ADMINISTRATIVE INFORMATION ELEMENTS <DESCGRP>"
+This section records access restrictions, use restrictions, preferred citation, and acquisition information.  ALL REQUIRED ELEMENTS.
+
+H="<descgrp type="admininfo">"
+
+^!Set %accessrestrict%=^?[(T=C)Access Restrictions <accessrestrict> R:==Collection is open to research.]; %userestrict%=^?[(T=C)Use Restrictions <userestrict> R:==There are no restrictions.]; %prefercite%=^?[(T=C)Preferred Citation <prefercite> Information is supplied add only special citation info R:]; %acqinfo%=^?[(T=C)Acquisition Information <acqinfo> R:]
+
+<descgrp type="admininfo">
+<head>Administrative Information
+</head>
+<accessrestrict encodinganalog="506$a">
+<head>Access Restrictions
+</head>
+<p>^%accessrestrict%
+</p>
+</accessrestrict>
+<userestrict encodinganalog="540$a">
+<head>Use Restrictions
+</head>
+<p>^%userestrict%
+</p>
+</userestrict>
+<prefercite encodinganalog="524$a">
+<head>Preferred Citation
+</head>
+<p>^%prefercite% ^%title%, Accession # ^%collectionnumber%, Special Collections and Archives, Tompkins-McCaw Library, Virginia Commonwealth University, Richmond, Va.
+</p>
+</prefercite>
+<acqinfo encodinganalog="541$a">
+<head>Acquisition Information
+</head>
+<p>^%acqinfo%
+</p>
+</acqinfo>
+
+
+
+H=";"
+
+H=";3A. OPTIONAL ADMINISTRATIVE INFORMATION ELEMENTS"
+If you decide to use any of these elements, they must appear in the order in which they are listed.
+
+
+H="Alternative Form Available"
+<altformavail>
+<head>Alternative Form Available
+</head>
+<p>^?[Type Text Here <altformavail> NR]>
+</p>
+</altformavail>
+
+
+H="Accruals"
+<accruals>
+<head>Accruals
+</head>
+<p>^?[Type Text Here <accruals> NR]
+</p>
+</accruals>
+
+
+H="Appraisal"
+<appraisal>
+<head>Appraisal
+</head>
+<p>^?[Type Text Here <appraisal> NR]
+</p>
+</appraisal>
+
+
+H="Custodial History"
+<custodhist>
+<head>Custodial History
+</head>
+<p>^?[Type Text Here <custodhist> NR]
+</p>
+</custodhist>
+
+
+H="Processing Information"
+<processinfo>
+<head>Processing Information
+</head>
+<p>^?[Type Text Here <processinfo> NR]
+</p>
+</processinfo>
+
+
+H=";"
+
+H=";4. CLOSE <DESCGRP TYPE="ADMININFO">"
+This tag closes the <descgrp type="admininfo">.  
+
+H="</descgrp>"
+</descgrp>
+
+
+H=";"
+
+H=";5. BIOGHIST, SCOPECONTENT, ARRANGEMENT"
+This section records the biographical or historical information, scope and content note, and arrangement information. SCOPECONTENT IS REQUIRED  
+
+H="5A. <bioghist>"
+
+^!Set %bioghisthead%=^?[(T=C)Biographical Information or Historical Information?==_Biographical Information|Historical Information|Biographical/Historical Information ]; %bioghist%=^?[(T=C)Biographical or Historical Information <bioghist> RA:]
+
+<bioghist encodinganalog="545$a">
+<head>^%bioghisthead%
+</head>
+<p>^%bioghist%
+</p>
+</bioghist>
+
+
+
+H="5B. <scopecontent>"
+
+^!Set %scopecontent%=^?[(T=C)Scope and Content <scopecontent> R:]
+
+<scopecontent encodinganalog="520$a">
+<head>Scope and Content
+</head>
+<p>^%scopecontent%
+</p>
+</scopecontent>
+
+
+
+H="5C. <arrangement>"
+
+^!Set %arrangement%=^?[(T=C)Arrangement <arrangement> RA:]
+
+<arrangement encodinganalog="351">
+<head>Arrangement
+</head>
+<p>^%arrangement%
+</p>
+</arrangement>
+
+
+
+H="<p></p>"
+<p>^&</p>
+
+H=";"
+
+
+H=";6. ADJUNCT DESCRIPTIVE DATA <DESCGRP>"
+Used to record information about the location of originals, other finding aids, related material, and separated material. ALL OPTIONAL ELEMENTS
+
+
+H="<descgrp type="add"> HEAD"
+
+<descgrp type="add">
+
+<head>Adjunct Descriptive Data
+</head>
+Enter All Elements Here
+
+
+^!Find "Enter All Elements Here" CWS
+
+H="Element Entry Clip"
+
+:Yes
+^!Set %itype%=^?{Choose type of element (must appear in the finding aid in the order listed in the drop-down menu)=_Bibliography^=bibliography|File Plan^=fileplan|Location of Originals^=originalsloc|Other Finding Aid^=otherfindaid|Technical Requirements^=phystech|Related Material^=relatedmaterial|Separated Material^=separatedmaterial|}; %text%=^?{Text}
+
+^!GoTo ^%itype%
+
+:bibliography
+<bibliography encodinganalog="581$a">
+<head>Bibliography
+</head>
+<bibref>^%text%
+</bibref>
+</bibliography>
+
+^!Goto Repeat
+
+:fileplan
+<fileplan>
+<head>File Plan
+</head>
+<p>^%text%
+</p>
+</fileplan>
+
+^!Goto Repeat
+
+:originalsloc
+<originalsloc encodinganalog="535$a">
+<head>Location of Originals
+</head>
+<p>^%text%
+</p>
+</originalsloc>
+
+^!Goto Repeat
+
+:otherfindaid
+<otherfindaid>
+<head>Other Finding Aid
+</head>
+<p>^%text%
+</p>
+</otherfindaid>
+
+^!Goto Repeat
+
+:phystech
+<phystech encodinganalog="538$a">
+<head>Technical Requirements
+</head>
+<p>^%text%
+</p>
+</phystech>
+
+^!Goto Repeat
+
+:relatedmaterial
+<relatedmaterial encodinganalog="544$a">
+<head>Related Material
+</head>
+<p>^%text%
+</p>
+</relatedmaterial>
+
+^!Goto Repeat
+
+:separatedmaterial
+<separatedmaterial encodinganalog="544$a">
+<head>Separated Material
+</head>
+<p>^%text%
+</p>
+</separatedmaterial>
+
+^!Goto Repeat
+
+:Repeat
+^!Set %more%=^?{Does this collection have more Adjunct Descriptive Data=_Yes^=Yes|No^=No}
+
+^!GoTo ^%more%
+
+:No
+^!Goto End
+
+H="<bibref>"
+<bibref>^&</bibref>
+
+H="<p></p>"
+<p>^&</p>
+
+H=";"
+
+H=";6A. INDEXES"
+Must appear between <fileplan> and <originalsloc>
+
+H="<index> head"
+<index>
+<head>^?[Enter Title of Index Here]
+</head>
+
+
+H="Single <ref> element for <name> element"
+<indexentry>
+<name>^?[Enter name here]</name>
+<ref>^?[Enter text for reference element here (i.e. Box 1, Folder 3)]</ref>
+</indexentry>
+
+
+H="Single <ref> element for <subject> element"
+<indexentry>
+<subject>^?[Enter subject here]</subject>
+<ref>^?[Enter text for reference element here (i.e. Box 3, Folder 10)]</ref>
+</subject>
+
+
+H="Multiple <ref> elements for <name> element"
+<indexentry>
+<name>^?[Enter name here]</name>
+<ptrgrp>
+<ref>^?[Enter text for 1st reference element here (i.e. Box 3, Folder 5)]</ref>
+<ref>^?[Enter text for 2nd reference element here (i.e. Box 6, Folder 9)]</ref>
+</ptrgrp>
+</indexentry>
+
+
+H="Multiple <ref> elements for <subject> element"
+<indexentry>
+<subject>^?[Enter subject here]</subject>
+<ptrgrp>
+<ref>^?[Enter text for 1st reference element here (i.e. Box 3, Folder 5)]</ref>
+<ref>^?[Enter text for 2nd reference element here (i.e. Box 6, Folder 9)]</ref>
+</ptrgrp>
+</indexentry>
+
+
+H="Additional <ref> elements"
+<ref>^?[Enter text for reference element here (i.e. Box 10, Folder 12)]</ref>
+
+
+H="Close <index>"
+</index>
+
+
+H=";"
+
+H=";6B. CLOSE <DESCGRP TYPE="ADD">"
+This tag closes the <descgrp type="add">.  
+
+H="</descgrp>"
+</descgrp>
+
+
+H=";"
+
+
+H=";7. <CONTROLACCESS>"
+Index Terms.
+
+H="Controlaccess Section Head"
+
+<controlaccess>
+<head>Index Terms</head>
+Enter All Sections or Index Terms Here
+</controlaccess>
+
+^!Find "Enter All Sections or Index Terms Here" CWS
+
+H="Section Headings"
+
+<controlaccess>
+<head>^?[Section head=_Persons:|Family Names:|Corporate Names:|Subjects:|Geographical Names:|Titles:|Functions:|Genre and Form Terms:|Occupations:|]</head>
+Enter All Index Terms Here
+</controlaccess>
+
+^!Find "Enter All Index Terms Here" CWS
+
+H="Item Tags Entry Clip"
+
+:Yes
+^!Set %itype%=^?{Choose type of Term=_Person^=persname|Family Name^=famname|Corporate Name^=corpname|Subject^=subject|Geographical Name^=geogname|Title^=title|Function^=function|Form/Genre^=genreform|Occupation^=occupation|}; %term%=^?{Catalog Term}
+
+^!GoTo ^%itype%
+
+:persname
+<persname encodinganalog="600$a">^%term%</persname>
+
+^!Goto Repeat
+
+:famname
+<famname encodinganalog="600$a">^%term%</famname>
+
+^!Goto Repeat
+
+:corpname
+<corpname encodinganalog="610$a">^%term%</corpname>
+
+^!Goto Repeat
+
+:subject
+<subject source="lcsh" encodinganalog="650$a">^%term%</subject>
+
+^!Goto Repeat
+
+:geogname
+<geogname source="lcsh" encodinganalog="651$a">^%term%</geogname>
+
+^!Goto Repeat
+
+:title
+<title encodinganalog="630$a">^%term%</title>
+
+^!Goto Repeat
+
+:function
+<function encodinganalog="657$a">^%term%</function>
+
+^!Goto Repeat
+
+:genreform
+<genreform source="aat" encodinganalog="655$a">^%term%</genreform>
+
+^!Goto Repeat
+
+:occupation
+<occupation encodinganalog="656$a">^%term%</occupation>
+
+^!Goto Repeat
+
+:Repeat
+^!Set %more%=^?{Does this collection have more Catalog Terms=_Yes^=Yes|No^=No}
+
+^!GoTo ^%more%
+
+:No
+^!Goto End
+
+
+H=";"
+
+H=";8. CLOSE <ARCHDESC> AND <EAD>"
+Adds the closing tags necessary for parsing upper section.  If adding a <dsc>, remember to delete the close </ead> tag before parsing and publishing.
+
+H="</archdesc></ead>"
+</archdesc>
+</ead>
+
+
+H=";"
+
+H=";9. <DSC> ELEMENTS"
+Contents Listing.
+
+H="9A. <dsc>"
+<dsc type=^?[Choose the description type=_"combined"|"analyticover"|"in-depth"]>
+<head>Contents List
+</head>
+
+H="9B. <c01>"
+<c01 level="^?[level=_series|subseries|collection|recordgrp|subgrp|item|file|fonds]">
+<did>
+<unittitle label="^?[label if nec.]">^?[series/folder title etc.]
+<unitdate type="^?[date type if applicable=_inclusive|bulk|^=]">^?[unitdate if applicable]
+</unitdate>
+</unittitle>
+<physloc>^?[physical location if nec.]
+</physloc>
+<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
+</container>
+<physdesc>^?[physical description if nec.]
+</physdesc>
+</did>
+<scopecontent>
+<p>^?[paste scope into ead text if longer than this window]
+</p>
+</scopecontent>
+<arrangement>
+<p>^?[arrangement (chronological/alpha etc) if nec.]
+</p>
+</arrangement>
+
+
+H="  </c01>"
+</c01>
+
+
+
+H="9C. <c02>"
+	<c02 level="^?[level=series|_subseries|collection|recordgrp|subgrp|item|file|fonds]">
+	<did>
+	<unittitle label="^?[label if nec.]">^?[subseries/folder/item title etc.]
+	<unitdate type="^?[date type if applicable=_inclusive|bulk|^=]">^?[unitdate if applicable]
+	</unitdate>
+	</unittitle>
+	<physloc>^?[physical location if nec.]
+	</physloc>
+	<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
+	</container>
+	<physdesc>^?[physical description if nec.]
+	</physdesc>
+	</did>
+	<scopecontent>
+	<p>^?[paste scope into ead text if longer than this window]
+	</p>
+	</scopecontent>
+	<arrangement>
+	<p>^?[arrangement (chronological/alpha etc) if nec.]
+	</p>
+	</arrangement>
+
+
+H="	</c02>"
+	</c02>
+
+
+
+H="9D. <c03>"
+		<c03 level="^?[level=series|subseries|collection|recordgrp|subgrp|item|_file|fonds]">
+		<did>
+		<unittitle label="^?[label if nec.]">^?[folder/item title etc.]
+		<unitdate type="^?[date type if applicable=_inclusive|bulk|^=]">^?[unitdate if applicable]
+		</unitdate>
+		</unittitle>
+		<physloc>^?[physical location if nec.]
+		</physloc>
+		<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
+</container>
+		<physdesc>^?[physical description: # of items/ folders etc.]
+		</physdesc>
+		</did>
+		<scopecontent>
+		<p>^?[paste scope into ead text if longer than this window]
+		</p>
+		</scopecontent>
+		<arrangement>
+		<p>^?[arrangement (chronological/alpha etc) if nec.]
+		</p>
+		</arrangement>
+
+
+H="	</c03>"
+		</c03>
+
+
+
+H="9E. <c04>"
+			<c04 level="^?[level=series|subseries|collection|recordgrp|subgrp|_item|file|fonds]">
+			<did>
+			<unittitle label="^?[label if nec.]">^?[REQUIRED: folder/item title etc. ]
+			<unitdate type="^?[date type if applicable=_inclusive|bulk|^=]">^?[unitdate if applicable]
+			</unitdate>
+			</unittitle>
+			<physloc>^?[physical location if nec.]
+			</physloc>
+			<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
+</container>
+			<physdesc>^?[physical description: # of items/ folders etc.]
+			</physdesc>
+			</did>
+			<scopecontent>
+			<p>^?[paste scope into ead text if longer than this window]
+			</p>
+			</scopecontent>
+			<arrangement>
+			<p>^?[arrangement (chronological/alpha etc) if nec.]
+			</p>
+			</arrangement>
+
+
+H="	</c04>"
+			</c04>
+			
+
+
+H="9F. Finish <dsc>"
+
+</dsc>
+</archdesc>
+</ead>
+
+
+
+H=";"
+
+H=";REVISION DESCRIPTION"
+An optional subelement of the <eadheader> used to record information about significant changes or alterations that have been made to the encoded finding aid.  ELEMENT MUST BE	PLACED BETWEEN THE </PROFILEDESC> TAG AND THE </EADHEADER> TAG IN THE <EADHEADER> SECTION.
+
+H="<revisiondesc>"
+<revisiondesc>
+         <change>
+            <date>^?[Type date of revision here]</date>
+            <item>^?[Type description of revision here]</item>
+         </change>
+</revisiondesc>
+
+H="Additional <change> elements"
+         <change>
+            <date>^?[Type Revision Date Here]</date>
+            <item>^?[Type Revision Description Here]</item>
+         </change>
+
+H="Close <revisiondesc>"
+</revisiondesc>
+
+H=";"
+
+H=";<LANGMATERIAL>"
+For adding additional <language> elements if the collection you are describing has material in more than one language.  ELEMENT MUST BE PLACED BETWEEN THE LAST CLOSED </LANGUAGE> ELEMENT AND THE CLOSED <LANGMATERIAL> ELEMENT IN THE UPPER LEVEL <DID>.  Do not confuse the <langmaterial> element with the <langusage> element which specifies the language(s) in which the finding aid was written.  The langcode attribute should be set using the standard three letter bibliographic codes specified in ISO 639-2b. These codes are available at http://www.loc.gov/standards/iso639-2/langcodes.html.
+
+H="Additional <language> elements"
+<language langcode="^?[Type Appropriate ISO 639-2b Language Code Here (i.e. eng, fre, ger, spa)"]">^?[Type Language Name Here (i.e. English, French, German, Spanish, etc.)]
+</language>
+
+H=";"
+
+
+H=";FORMATTING TAGS"
+To use the title or emph tags, simple highlight the text and then double click the clip. The highlighted text will then have the correct tags places before and after it.
+
+H="F1. Titles"
+<title>^&</title>
+
+H="   a. Italic title"
+<title render="italic">^&</title>
+
+H="   b. Doublequote"
+<title render="doublequote">^&</title>
+
+H="   c. Singlequote"
+<title render="singlequote">^&</title>
+
+H="   d. Bold title"
+<title render="bold">^&</title>
+
+H="   e. Emph bold"
+<emph render="bold">^&</emph>
+
+H="   f. Emph underline"
+<emph render="underline">^&</emph>
+
+
+H="F2. Paragraph Formatting"
+<p>^&
+</p>
+
+H="   a. <p>"
+<p>
+
+
+H="   b. </p>"
+</p>
+
+
+H="   c. Linebreak"
+<lb/>
+
+
+H="F3. Header"
+<head>^?[Type header name here]
+</head>
+
+
+H="F4. Date"
+<date>^&</date>
+
+H="   a. Open date"
+<date>
+
+H="   b. Close date"
+</date>
+
+H="F5. abbr"
+<abbr expan="^?[enter expanded form]">^&</abbr>
+
+H="   a. for abbreviated persnames"
+<persname normal="^?[enter expanded form]">^&</geogname>
+
+H="   b. for abbreviated geognames"
+<geogname normal="^?[enter expanded form]">^&</geogname>
+
+H="F6. corpname"
+<corpname encodinganalog="110$a">^&</corpname>
+
+H="F7. famname"
+<famname encodinganalog="600$a">^&</famname>
+
+H="F8. genreform"
+<genreform encodinganalog="655$a" source="aat">^&</geogname>
+
+H="F9. geogname"
+<geogname encodinganalog="651$a">^&</geogname>
+
+H="F10. persname"
+<persname normal="^?[enter name according to AACR2 form]" encodinganalog="600$a">^&</persname>
+
+H="F11. List"
+<list type="^?[type=_simple|deflist|marked|ordered]">
+	<head>^?[head if nec.]</head>
+
+
+H="   a. Item"
+<item>^?[Type item name here]</item>
+
+
+H="   b. Close list"
+</list>
+
+H="F12. Address"
+
+<address>
+<addressline>^?[Enter addressline here]</addressline>
+^&
+</address>
+
+H="   a. <addressline>"
+<addressline>^?[Enter additional addresslines here]</addressline>
+^&
+
+H="F13. Blockquote"
+<blockquote><p>^&</p></blockquote>
+
+H="F14. Chronology List"
+
+<chronlist>
+<head>Chronology</head>
+<listhead>
+<head01>Date</head01>
+<head02>Event</head02>
+<chronitem>
+<date>^?[Enter Date of Event Here]</date>
+<event>^?[Enter Event Here]</event>
+</chronitem>
+^&
+</chronlist>
+
+H="   a. Additional <chronitems>"
+<chronitem>
+<date>^?[Enter Date of Event Here]</date>
+<event>^?[Enter Event Here]</event>
+</chronitem>
+^&
+
+H=";"
+
+H=";DIGITAL SURROGATES"
+
+
+H="Add <daogrp>"
+<daogrp xlink:type="extended">
+<daoloc xlink:type="locator" xlink:title="^?[Title, such as "Full Text" or "Page One"]" xlink:href="^?[Enter the URL]">
+</daoloc>
+</daogrp>
+
+
+H=";CREATE A LINK"
+
+H="Add <extref>"
+<extref xlink:type="simple" xlink:href="^?[Enter the URL]">^?[Enter display text to hyperlink]</extref>
