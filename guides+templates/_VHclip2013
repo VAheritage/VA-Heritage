@@ -151,6 +151,7 @@ H="<eadheader> and <frontmatter>"
 ]>
 <ead xmlns="urn:isbn:1-931666-22-9" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" id="^%eadid%">
 <eadheader audience="internal" langencoding="iso639-2b" findaidstatus="^%findaidstatus%">
+<!-- Change to match your institution's ead information -->
 <eadid countrycode="US" mainagencycode="US-ViRCUH">PUBLIC "-//Virginia Commonwealth University::Tompkins-McCaw Library::Special Collections and Archives//TEXT (US::ViRCU-H::^%eadid%::A Guide to the ^%titleproper%, ^%dates%)//EN" "^%eadid%.xml"
 </eadid>
 <filedesc>
@@ -165,12 +166,11 @@ H="<eadheader> and <frontmatter>"
 </author>
 </titlestmt>
 <publicationstmt>
-<!-- Change to match your institution's name -->
-<publisher>Virginia Commonwealth University, Tompkins-McCaw
-         Library
+
+<publisher><!-- Change to match your institution's name -->
 </publisher> &address;
-<!-- Change to match your institution's name and copyright statement -->
-<date type="publication">&#169; ^%copyrightdate% By Virginia Commonwealth University. All rights reserved.
+
+<date type="publication">&#169; ^%copyrightdate% By <!-- Change to match your institution's name and copyright statement -->
 </date>
 <p id="usestatement">
 <extref xlink:type="simple" xlink:href="http://www.lib.virginia.edu/speccol/vhp/conditions.html" />
@@ -190,8 +190,7 @@ H="<eadheader> and <frontmatter>"
 <titlepage>
 <titleproper>A Guide to the ^%titleproper%, <date>^%dates%</date>
 </titleproper>
-<!-- Change to match your institution's name -->
-<subtitle>A Collection in <lb/>Special Collections and Archives, Tompkins-McCaw Library
+<subtitle>A Collection in <lb/><!-- Change to match your institution's name -->
 <num type="Accession Number">^%collectionnumber%
 </num>
 </subtitle>
@@ -200,8 +199,7 @@ H="<eadheader> and <frontmatter>"
 <p id="logostmt">
 <extptr xlink:actuate="onLoad" xlink:show="embed" xlink:type="simple" xlink:href="http://ead.lib.virginia.edu/vivaead/logos/vcu.jpg"/>
 </p>
-<!-- Change to match your institution's name -->
-<publisher>Virginia Commonwealth University, Tompkins-McCaw Library
+<publisher><!-- Change to match your institution's name -->
 </publisher>
 <date type="publication">^%copyrightdate%
 </date> &contact;
@@ -228,13 +226,13 @@ H="Descriptive Summary"
 ^!Set %title%=^?[(T=C)Title of collection or papers <unittitle> R:]; %dates%=^?[(T=C)Inclusive or bulk dates of collection <unitdate> R:]; %datetype%=^?[(T=C)Inclusive or Bulk?==_inclusive|bulk]; %collectionnumber%=^?[(T=C)Collection/accession number WITHOUT LABEL <unitid> R:]; %collectionnumbertype%=^?[(T=C)Accession number or Collection number?==_Accession number|Collection number]; %physloclabel%=^?[(T=C)Physical Location Label?==_Location|Shelf Location|Storage Location]; %physloc%=^?[(T=C)Physical Location Text <physloc> NR:];%physdesclabel%=^?[(T=C)Physical Description Label?==_Physical Characteristics|Extent|Size|Physical Description]; %physdesc%=^?[(T=C)Extent or volume of collection <physdesc> R:]; %abstract%=^?[(T=C)Abstract <abstract> NR:]; %originationlabel%=^?[(T=C)Creator or Collector?==_Creator|Collector]; %originationencodinganalog%=^?[(T=C)MARC Encoding Analog (100 or 110) for Creator or Collector?==_100$a|110$a]; %origination%=^?[(T=C)Creator or collector of collection <origination> NR:]
 
 <archdesc level="collection">
-<runner placement="footer">Special Collections and Archives,
-      Tompkins-McCaw Library
+<runner placement="footer"><!-- Change to match your institution's name -->
 </runner>
 <did>
 <head>Descriptive Summary
 </head>
-<repository label="Repository" encodinganalog="852$a">Special Collections and Archives, Tompkins-McCaw Library
+<!-- Change to match your institution's name -->
+<repository label="Repository" encodinganalog="852$a"><!-- Change to match your institution's name -->
 </repository>
 <unittitle label="Title" encodinganalog="245$a">^%title%
 <unitdate type="^%datetype%" label="Date" encodinganalog="245$f">^%dates%
@@ -285,7 +283,7 @@ H="<descgrp type="admininfo">"
 <prefercite encodinganalog="524$a">
 <head>Preferred Citation
 </head>
-<p>^%prefercite% ^%title%, Accession # ^%collectionnumber%, Special Collections and Archives, Tompkins-McCaw Library, Virginia Commonwealth University, Richmond, Va.
+<p>^%prefercite% ^%title%, Accession # ^%collectionnumber%, <!-- Change to match your institution's citation information -->
 </p>
 </prefercite>
 <acqinfo encodinganalog="541$a">
