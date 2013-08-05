@@ -131,7 +131,6 @@ H="CLEAN UP <EAD>!!"
 ^!TOOLBAR Save Document
 ^!Prompt Done!   Upload and Parse when ready.
 
-
 H=";"
 
 H=";1. <EADHEADER> AND <FRONTMATTER>"
@@ -235,7 +234,7 @@ H="Descriptive Summary"
 <!-- Change to match your institution's name -->
 <repository label="Repository" encodinganalog="852$a"><!-- Change to match your institution's name -->
 </repository>
-<unittitle label="Title" encodinganalog="245$a">^%title%
+<unittitle label="Title" encodinganalog="245$a">^%title%, 
 <unitdate type="^%datetype%" label="Date" encodinganalog="245$f">^%dates%
 </unitdate>
 </unittitle>
@@ -306,7 +305,7 @@ H="Alternative Form Available"
 <altformavail>
 <head>Alternative Form Available
 </head>
-<p>^?[Type Text Here <altformavail> NR]>
+<p>^?[Type Text Here <altformavail> NR]
 </p>
 </altformavail>
 
@@ -658,28 +657,17 @@ H="Item Tags Entry Clip"
 :No
 ^!Goto End
 
-
 H=";"
 
-H=";8. CLOSE <ARCHDESC> AND <EAD>"
-Adds the closing tags necessary for parsing upper section.  If adding a <dsc>, remember to delete the close </ead> tag before parsing and publishing.
-
-H="</archdesc></ead>"
-</archdesc>
-</ead>
-
-
-H=";"
-
-H=";9. <DSC> ELEMENTS"
+H=";8. <DSC> ELEMENTS"
 Contents Listing.
 
-H="9A. <dsc>"
+H="8A. <dsc>"
 <dsc type=^?[Choose the description type=_"combined"|"analyticover"|"in-depth"]>
 <head>Contents List
 </head>
 
-H="9B. <c01>"
+H="8B. <c01>"
 <c01 level="^?[level=_series|subseries|collection|recordgrp|subgrp|item|file|fonds]">
 <did>
 <unittitle label="^?[label if nec.]">^?[series/folder title etc.]
@@ -708,7 +696,7 @@ H="  </c01>"
 
 
 
-H="9C. <c02>"
+H="8C. <c02>"
 	<c02 level="^?[level=series|_subseries|collection|recordgrp|subgrp|item|file|fonds]">
 	<did>
 	<unittitle label="^?[label if nec.]">^?[subseries/folder/item title etc.]
@@ -737,7 +725,7 @@ H="	</c02>"
 
 
 
-H="9D. <c03>"
+H="8D. <c03>"
 		<c03 level="^?[level=series|subseries|collection|recordgrp|subgrp|item|_file|fonds]">
 		<did>
 		<unittitle label="^?[label if nec.]">^?[folder/item title etc.]
@@ -766,7 +754,7 @@ H="	</c03>"
 
 
 
-H="9E. <c04>"
+H="8E. <c04>"
 			<c04 level="^?[level=series|subseries|collection|recordgrp|subgrp|_item|file|fonds]">
 			<did>
 			<unittitle label="^?[label if nec.]">^?[REQUIRED: folder/item title etc. ]
@@ -795,9 +783,10 @@ H="	</c04>"
 			
 
 
-H="9F. Finish <dsc>"
+H=";9. CLOSE ENTIRE DOCUMENT (R)"
+These are ALWAYS the final two tags of the EAD document. Adding anything else after them will result in an error. 
 
-</dsc>
+H="</archdesc></ead>"
 </archdesc>
 </ead>
 
