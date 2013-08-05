@@ -138,7 +138,9 @@ Section 0 and 1 in the old MU forms.
 
 H="<eadheader> and <frontmatter>"
 
-^!Set %eadid%=vicruh^?[(T=C)Vircuh number, just add number:]; %findaidstatus%=^?[(T=C)Finding Aid Status:==_edited-partial-draft|edited-full-draft|unverified-full-draft|unverified-partial-draft]; %titleproper%=^?[(T=C)A Guide to the (complete titleproper of finding aid) <titleproper>:]; %dates%=^?[(T=C)Dates of collection or papers <date>:]; %titlepropersorttitle%=^?[(T=C)"Sort" title goes here <subtitle>:]; %collectionnumbertype%=^?[(T=C)Accession number or Collection number?==_Accession number|Collection number]; %collectionnumber%=^?[(T=C)Collection number WITHOUT LABEL goes here <num>:]; %author%=^?[(T=C)Author of finding aid <author>:]; %encoder%=^?[(T=C)Encoder of finding aid:]; %encodeddate%=^?[(T=C)Date finding aid encoded (i.e. 14 January 2006):]; %processor%=^?[(T=C)Processor of collection or papers:]; %derivedfrom%=^?[(T=C)EAD finding aid derived from:==_MARC record|MS Word|Database|being created directly into EAD]
+;change eadid prefix to your match your library's MARC institution code.
+
+^!Set %eadid%=vircuh^?[(T=C)Vircuh number, just add number:]; %findaidstatus%=^?[(T=C)Finding Aid Status:==_edited-partial-draft|edited-full-draft|unverified-full-draft|unverified-partial-draft]; %titleproper%=^?[(T=C)A Guide to the (complete titleproper of finding aid) <titleproper>:]; %dates%=^?[(T=C)Dates of collection or papers <date>:]; %titlepropersorttitle%=^?[(T=C)"Sort" title goes here <subtitle>:]; %collectionnumbertype%=^?[(T=C)Accession number or Collection number?==_Accession number|Collection number]; %collectionnumber%=^?[(T=C)Collection number WITHOUT LABEL goes here <num>:]; %author%=^?[(T=C)Author of finding aid <author>:]; %encoder%=^?[(T=C)Encoder of finding aid:]; %encodeddate%=^?[(T=C)Date finding aid encoded (i.e. 14 January 2006):]; %processor%=^?[(T=C)Processor of collection or papers:]; %derivedfrom%=^?[(T=C)EAD finding aid derived from:==_MARC record|MS Word|Database|being created directly into EAD; %copyrightdate%=^?[(T=C)Year of publication (of finding aid) R:]
 
 <?xml version="1.0"?>
 <?xml-model href="http://www.loc.gov/ead/ead.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
@@ -162,10 +164,12 @@ H="<eadheader> and <frontmatter>"
 </author>
 </titlestmt>
 <publicationstmt>
+<!-- Change to match your institution's name -->
 <publisher>Virginia Commonwealth University, Tompkins-McCaw
          Library
 </publisher> &address;
-<date type="publication">&#169; 2011 By Virginia Commonwealth University. All rights reserved.
+<!-- Change to match your institution's name and copyright statement -->
+<date type="publication">&#169; ^%copyrightdate% By Virginia Commonwealth University. All rights reserved.
 </date>
 <p id="usestatement">
 <extref xlink:type="simple" xlink:href="http://www.lib.virginia.edu/speccol/vhp/conditions.html" />
@@ -185,6 +189,7 @@ H="<eadheader> and <frontmatter>"
 <titlepage>
 <titleproper>A Guide to the ^%titleproper%, <date>^%dates%</date>
 </titleproper>
+<!-- Change to match your institution's name -->
 <subtitle>A Collection in <lb/>Special Collections and Archives, Tompkins-McCaw Library
 <num type="Accession Number">^%collectionnumber%
 </num>
@@ -194,9 +199,10 @@ H="<eadheader> and <frontmatter>"
 <p id="logostmt">
 <extptr xlink:actuate="onLoad" xlink:show="embed" xlink:type="simple" xlink:href="http://ead.lib.virginia.edu/vivaead/logos/vcu.jpg"/>
 </p>
+<!-- Change to match your institution's name -->
 <publisher>Virginia Commonwealth University, Tompkins-McCaw Library
 </publisher>
-<date type="publication">2011
+<date type="publication">^%copyrightdate%
 </date> &contact;
 <list type="deflist">
 <defitem>
