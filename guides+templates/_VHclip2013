@@ -138,16 +138,13 @@ Section 0 and 1 in the old MU forms.
 
 H="<eadheader> and <frontmatter>"
 
-;change eadid prefix to your match your library's MARC institution code.
-;change the address and contact entity URLs to match your institution.
-
 ^!Set %eadid%=vircuh^?[(T=C)Vircuh number, just add number:]; %findaidstatus%=^?[(T=C)Finding Aid Status:==_edited-partial-draft|edited-full-draft|unverified-full-draft|unverified-partial-draft]; %titleproper%=^?[(T=C)A Guide to the (complete titleproper of finding aid) <titleproper>:]; %dates%=^?[(T=C)Dates of collection or papers <date>:]; %titlepropersorttitle%=^?[(T=C)"Sort" title goes here <subtitle>:]; %collectionnumbertype%=^?[(T=C)Accession number or Collection number?==_Accession number|Collection number]; %collectionnumber%=^?[(T=C)Collection number WITHOUT LABEL goes here <num>:]; %author%=^?[(T=C)Author of finding aid <author>:]; %encoder%=^?[(T=C)Encoder of finding aid:]; %encodeddate%=^?[(T=C)Date finding aid encoded (i.e. 14 January 2006):]; %processor%=^?[(T=C)Processor of collection or papers:]; %derivedfrom%=^?[(T=C)EAD finding aid derived from:==_MARC record|MS Word|Database|being created directly into EAD; %copyrightdate%=^?[(T=C)Year of publication (of finding aid) R:]
 
 <?xml version="1.0"?>
 <?xml-model href="http://www.loc.gov/ead/ead.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <ead xmlns="urn:isbn:1-931666-22-9" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" id="^%eadid%">
 <eadheader audience="internal" langencoding="iso639-2b" findaidstatus="^%findaidstatus%">
-<!-- Change to match your institution's ead information -->
+<!-- Change below to match your institution's ead information -->
 <eadid countrycode="US" mainagencycode="US-ViRCUH">PUBLIC "-//Virginia Commonwealth University::Tompkins-McCaw Library::Special Collections and Archives//TEXT (US::ViRCU-H::^%eadid%::A Guide to the ^%titleproper%, ^%dates%)//EN" "^%eadid%.xml"
 </eadid>
 <filedesc>
@@ -163,10 +160,10 @@ H="<eadheader> and <frontmatter>"
 </titlestmt>
 <publicationstmt>
 
-<publisher><!-- Change to match your institution's name -->
-</publisher> <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="http://eadtest.lib.virginia.edu/vivaead/add_con/uva-sc_address.xi.xml" />
+<publisher><!-- Add your institution's name -->
+</publisher> <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="http://eadtest.lib.virginia.edu/vivaead/add_con/uva-sc_address.xi.xml" /><!-- Change to match your institution -->
 
-<date type="publication">&#169; ^%copyrightdate% By <!-- Change to match your institution's name and copyright statement -->
+<date type="publication">&#169; ^%copyrightdate% By <!-- Add your institution's name and copyright statement -->
 </date>
 <p id="usestatement">
 <extref xlink:type="simple" xlink:href="http://www.lib.virginia.edu/speccol/vhp/conditions.html" />
@@ -186,7 +183,7 @@ H="<eadheader> and <frontmatter>"
 <titlepage>
 <titleproper>A Guide to the ^%titleproper%, <date>^%dates%</date>
 </titleproper>
-<subtitle>A Collection in <lb/><!-- Change to match your institution's name -->
+<subtitle>A Collection in <lb/><!-- Add your institution's name -->
 <num type="Accession Number">^%collectionnumber%
 </num>
 </subtitle>
@@ -195,10 +192,10 @@ H="<eadheader> and <frontmatter>"
 <p id="logostmt">
 <extptr xlink:actuate="onLoad" xlink:show="embed" xlink:type="simple" xlink:href="http://ead.lib.virginia.edu/vivaead/logos/vcu.jpg"/>
 </p>
-<publisher><!-- Change to match your institution's name -->
+<publisher><!-- Add your institution's name -->
 </publisher>
 <date type="publication">^%copyrightdate%
-</date> <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="http://eadtest.lib.virginia.edu/vivaead/add_con/uva-sc_contact.xi.xml" />
+</date> <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="http://eadtest.lib.virginia.edu/vivaead/add_con/uva-sc_contact.xi.xml" /><!-- Change to match your institution -->
 <list type="deflist">
 <defitem>
 <label>Processed by:
@@ -222,13 +219,12 @@ H="Descriptive Summary"
 ^!Set %title%=^?[(T=C)Title of collection or papers <unittitle> R:]; %dates%=^?[(T=C)Inclusive or bulk dates of collection <unitdate> R:]; %datetype%=^?[(T=C)Inclusive or Bulk?==_inclusive|bulk]; %collectionnumber%=^?[(T=C)Collection/accession number WITHOUT LABEL <unitid> R:]; %collectionnumbertype%=^?[(T=C)Accession number or Collection number?==_Accession number|Collection number]; %physloclabel%=^?[(T=C)Physical Location Label?==_Location|Shelf Location|Storage Location]; %physloc%=^?[(T=C)Physical Location Text <physloc> NR:];%physdesclabel%=^?[(T=C)Physical Description Label?==_Physical Characteristics|Extent|Size|Physical Description]; %physdesc%=^?[(T=C)Extent or volume of collection <physdesc> R:]; %abstract%=^?[(T=C)Abstract <abstract> NR:]; %originationlabel%=^?[(T=C)Creator or Collector?==_Creator|Collector]; %originationencodinganalog%=^?[(T=C)MARC Encoding Analog (100 or 110) for Creator or Collector?==_100$a|110$a]; %origination%=^?[(T=C)Creator or collector of collection <origination> NR:]
 
 <archdesc level="collection">
-<runner placement="footer"><!-- Change to match your institution's name -->
+<runner placement="footer"><!-- Add your institution's name -->
 </runner>
 <did>
 <head>Descriptive Summary
 </head>
-<!-- Change to match your institution's name -->
-<repository label="Repository" encodinganalog="852$a"><!-- Change to match your institution's name -->
+<repository label="Repository" encodinganalog="852$a"><!-- Add your institution's name -->
 </repository>
 <unittitle label="Title" encodinganalog="245$a">^%title%, 
 <unitdate type="^%datetype%" label="Date" encodinganalog="245$f">^%dates%
@@ -279,7 +275,7 @@ H="<descgrp type="admininfo">"
 <prefercite encodinganalog="524$a">
 <head>Preferred Citation
 </head>
-<p>^%prefercite% ^%title%, Accession # ^%collectionnumber%, <!-- Change to match your institution's citation information -->
+<p>^%prefercite% ^%title%, Accession # ^%collectionnumber%, <!-- Add your institution's citation information -->
 </p>
 </prefercite>
 <acqinfo encodinganalog="541$a">
