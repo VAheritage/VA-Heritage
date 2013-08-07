@@ -145,10 +145,6 @@ H="<eadheader> and <frontmatter>"
 
 <?xml version="1.0"?>
 <?xml-model href="http://www.loc.gov/ead/ead.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<!DOCTYPE ead [
-<!ENTITY address SYSTEM "http://ead.lib.virginia.edu/vivaead/add_con/vcu-tm_address.xml">
-<!ENTITY contact SYSTEM "http://ead.lib.virginia.edu/vivaead/add_con/vcu-tm_contact.xml">
-]>
 <ead xmlns="urn:isbn:1-931666-22-9" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" id="^%eadid%">
 <eadheader audience="internal" langencoding="iso639-2b" findaidstatus="^%findaidstatus%">
 <!-- Change to match your institution's ead information -->
@@ -168,7 +164,7 @@ H="<eadheader> and <frontmatter>"
 <publicationstmt>
 
 <publisher><!-- Change to match your institution's name -->
-</publisher> &address;
+</publisher> <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="http://eadtest.lib.virginia.edu/vivaead/add_con/uva-sc_address.xi.xml" />
 
 <date type="publication">&#169; ^%copyrightdate% By <!-- Change to match your institution's name and copyright statement -->
 </date>
@@ -202,7 +198,7 @@ H="<eadheader> and <frontmatter>"
 <publisher><!-- Change to match your institution's name -->
 </publisher>
 <date type="publication">^%copyrightdate%
-</date> &contact;
+</date> <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="http://eadtest.lib.virginia.edu/vivaead/add_con/uva-sc_contact.xi.xml" />
 <list type="deflist">
 <defitem>
 <label>Processed by:
