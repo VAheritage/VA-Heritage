@@ -668,7 +668,9 @@ H="8B. <c01>"
 </unittitle>
 <physloc>^?[physical location if nec.]
 </physloc>
-<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
+<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no 
+
+numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
 </container>
 <physdesc>^?[physical description if nec.]
 </physdesc>
@@ -697,7 +699,9 @@ H="8C. <c02>"
 	</unittitle>
 	<physloc>^?[physical location if nec.]
 	</physloc>
-	<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
+	<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no 
+
+numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
 	</container>
 	<physdesc>^?[physical description if nec.]
 	</physdesc>
@@ -726,7 +730,9 @@ H="8D. <c03>"
 		</unittitle>
 		<physloc>^?[physical location if nec.]
 		</physloc>
-		<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
+		<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no 
+
+numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
 </container>
 		<physdesc>^?[physical description: # of items/ folders etc.]
 		</physdesc>
@@ -755,7 +761,9 @@ H="8E. <c04>"
 			</unittitle>
 			<physloc>^?[physical location if nec.]
 			</physloc>
-			<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
+			<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no 
+
+numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
 </container>
 			<physdesc>^?[physical description: # of items/ folders etc.]
 			</physdesc>
@@ -772,12 +780,11 @@ H="8E. <c04>"
 
 H="	</c04>"
 			</c04>
-			
+
 H="8F. </dsc>"
 </dsc>
 
 H=";"		
-
 
 H=";9. CLOSE ENTIRE DOCUMENT (R)"
 These are ALWAYS the final two tags of the EAD document. Adding anything else after them will result in an error. 
