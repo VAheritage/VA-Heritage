@@ -1,7 +1,7 @@
 = V5 MultiLine NoSorting TabWidth=30
 
 H=";VERSION HISTORY"
-This is version 4.0 updated on 28 June 2013.
+This is version 4.1 updated on 15 July 2013.
 
 1.3 (19 October):Update render title "italics" to "italic" since text following "italics" would not display.
 1.4 (04 November): Paxer changed to validate against dtd. Fix defitem in Section 1.
