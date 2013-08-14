@@ -161,7 +161,7 @@ H="<eadheader> and <frontmatter>"
 <publicationstmt>
 
 <publisher><!-- Add your institution's name -->
-</publisher> <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="http://ead.lib.virginia.edu/add_con/uva-sc_address.xi.xml" /><!-- Change to match your institution -->
+</publisher> <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="http://ead.lib.virginia.edu/vivaead/add_con/uva-sc_address.xi.xml" /><!-- Change to match your institution -->
 
 <date type="publication">&#169; ^%copyrightdate% By <!-- Add your institution's name and copyright statement -->
 </date>
@@ -195,7 +195,7 @@ H="<eadheader> and <frontmatter>"
 <publisher><!-- Add your institution's name -->
 </publisher>
 <date type="publication">^%copyrightdate%
-</date> <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="http://ead.lib.virginia.edu/add_con/uva-sc_contact.xi.xml" /><!-- Change to match your institution -->
+</date> <xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="http://ead.lib.virginia.edu/vivaead/add_con/uva-sc_contact.xi.xml" /><!-- Change to match your institution -->
 <list type="deflist">
 <defitem>
 <label>Processed by:
