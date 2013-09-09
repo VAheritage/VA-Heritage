@@ -93,9 +93,16 @@
 		<xsl:text>http://text.lib.virginia.edu/dtd/eadVIVA/</xsl:text>
 	</xsl:param>
 
-	<xsl:param name="xicontact"></xsl:param>
-	<xsl:param name="xiaddress"></xsl:param>
+	<xsl:param name="inst" ></xsl:param>
 	<xsl:param name="xiprefix" >http://ead.lib.virginia.edu/add_con/</xsl:param>
+	
+	<xsl:param name="xicontact">
+		<xsl:if test="$inst"><xsl:value-of select="concat($xiprefix,$inst,'_contact.xi.xml')"/></xsl:if>
+	</xsl:param>
+	<xsl:param name="xiaddress">
+		<xsl:if test="$inst">><xsl:value-of select="concat($xiprefix,$inst,'_address.xi.xml')"/></xsl:if>
+	</xsl:param>
+
 
 
 	<!-- Variables for namespace and processing instructions -->
@@ -324,12 +331,17 @@
 
 
 	<!-- XInclude  contacts & address  (for VIVA/VHP - sdm7g ) -->
+	<!-- If params $xicontact or $xiaddress are not null, 
+	  	 then replace publicationstmt/address and/or titlepage/list
+	  	 with an XInclude reference to the file. 
+	
+	  	 -->
 	
 	
 	<xsl:template match="/ead/eadheader/filedesc/publicationstmt/address">
 		<xsl:choose>
 			<xsl:when test="$xiaddress">
-				<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="{concat($xiprefix,$xiaddress)}" />				
+				<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="{$xiaddress}" />				
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:copy><xsl:apply-templates  select="@*|*" /></xsl:copy>
@@ -341,7 +353,7 @@
 	<xsl:template match="/ead/frontmatter/titlepage/list[@type='simple'][contains(head,'Contact Information')][preceding-sibling::publisher]" >
 		<xsl:choose>
 			<xsl:when test="$xicontact">
-				<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="{concat($xiprefix,$xicontact)}" />				
+				<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="{$xicontact}" />				
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:copy><xsl:apply-templates  select="@*|*" /></xsl:copy>
