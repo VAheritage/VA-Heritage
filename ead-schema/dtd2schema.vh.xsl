@@ -93,6 +93,11 @@
 		<xsl:text>http://text.lib.virginia.edu/dtd/eadVIVA/</xsl:text>
 	</xsl:param>
 
+	<xsl:param name="xicontact"></xsl:param>
+	<xsl:param name="xiaddress"></xsl:param>
+	<xsl:param name="xiprefix" >http://ead.lib.virginia.edu/add_con/</xsl:param>
+
+
 	<!-- Variables for namespace and processing instructions -->
 
 
@@ -316,5 +321,33 @@
 			<xsl:value-of select="concat( translate(../@countrycode, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' ),'-',.)"/>
 		</xsl:attribute>
 	</xsl:template>
+
+
+	<!-- XInclude  contacts & address  (for VIVA/VHP - sdm7g ) -->
 	
+	
+	<xsl:template match="/ead/eadheader/filedesc/publicationstmt/address">
+		<xsl:choose>
+			<xsl:when test="$xiaddress">
+				<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="{concat($xiprefix,$xiaddress)}" />				
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:copy><xsl:apply-templates  select="@*|*" /></xsl:copy>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+	
+	
+	<xsl:template match="/ead/frontmatter/titlepage/list[@type='simple'][contains(head,'Contact Information')][preceding-sibling::publisher]" >
+		<xsl:choose>
+			<xsl:when test="$xicontact">
+				<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="{concat($xiprefix,$xicontact)}" />				
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:copy><xsl:apply-templates  select="@*|*" /></xsl:copy>
+			</xsl:otherwise>
+		</xsl:choose>		
+	</xsl:template>
+	
+
 </xsl:stylesheet>
