@@ -94,13 +94,13 @@
 	</xsl:param>
 
 	<xsl:param name="inst" ></xsl:param>
-	<xsl:param name="xiprefix" >http://ead.lib.virginia.edu/add_con/</xsl:param>
+	<xsl:param name="xiprefix">http://ead.lib.virginia.edu:/vivaead/add_con/</xsl:param>
 	
 	<xsl:param name="xicontact">
 		<xsl:if test="$inst"><xsl:value-of select="concat($xiprefix,$inst,'_contact.xi.xml')"/></xsl:if>
 	</xsl:param>
 	<xsl:param name="xiaddress">
-		<xsl:if test="$inst">><xsl:value-of select="concat($xiprefix,$inst,'_address.xi.xml')"/></xsl:if>
+		<xsl:if test="$inst"><xsl:value-of select="concat($xiprefix,$inst,'_address.xi.xml')"/></xsl:if>
 	</xsl:param>
 
 
