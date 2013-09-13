@@ -74,6 +74,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns="urn:isbn:1-931666-22-9"
 	exclude-result-prefixes="xsi">
 
@@ -96,12 +97,12 @@
 	<xsl:param name="inst" ></xsl:param>
 	<xsl:param name="xiprefix">http://ead.lib.virginia.edu:/vivaead/add_con/</xsl:param>
 	
-	<xsl:param name="xicontact">
-		<xsl:if test="$inst"><xsl:value-of select="concat($xiprefix,$inst,'_contact.xi.xml')"/></xsl:if>
-	</xsl:param>
-	<xsl:param name="xiaddress">
-		<xsl:if test="$inst"><xsl:value-of select="concat($xiprefix,$inst,'_address.xi.xml')"/></xsl:if>
-	</xsl:param>
+	<xsl:variable name="xicontact">
+		<xsl:if test="string-length( normalize-space($inst))!=0"><xsl:value-of select="concat($xiprefix,$inst,'_contact.xi.xml')"/></xsl:if>
+	</xsl:variable>
+	<xsl:variable name="xiaddress">
+		<xsl:if test="string-length( normalize-space($inst))!=0"><xsl:value-of select="concat($xiprefix,$inst,'_address.xi.xml')"/></xsl:if>
+	</xsl:variable>
 
 
 
@@ -340,7 +341,7 @@
 	
 	<xsl:template match="/ead/eadheader/filedesc/publicationstmt/address">
 		<xsl:choose>
-			<xsl:when test="$xiaddress">
+			<xsl:when test="$inst">
 				<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="{$xiaddress}" />				
 			</xsl:when>
 			<xsl:otherwise>
@@ -352,7 +353,7 @@
 	
 	<xsl:template match="/ead/frontmatter/titlepage/list[@type='simple'][contains(head,'Contact Information')][preceding-sibling::publisher]" >
 		<xsl:choose>
-			<xsl:when test="$xicontact">
+			<xsl:when test="$inst">
 				<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="{$xicontact}" />				
 			</xsl:when>
 			<xsl:otherwise>
