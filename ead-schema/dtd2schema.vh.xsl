@@ -188,6 +188,9 @@
 		<xsl:copy/>
 	</xsl:template>
 
+	<!-- don't copy old stylesheet! VIVA/VHP: sdm7g -->
+	<xsl:template match="processing-instruction('xml-stylesheet')" /> 
+
 	<!--========== XLINK ==========-->
 
 	<!-- arc-type elements-->
