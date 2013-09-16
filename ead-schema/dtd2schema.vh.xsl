@@ -83,10 +83,8 @@
 
 	<!-- Resulting document: W3C ready? Or RNG (Oxygent) ready? -->
 
-	<xsl:param name="schema">
-		<xsl:text></xsl:text>
-		<!-- Alternatives RNG or W3C-->
-	</xsl:param>
+	<xsl:param name="schema">RNG</xsl:param>		<!-- Alternatives RNG or W3C-->
+	
 
 	<!-- Path to schema -->
 
@@ -115,6 +113,15 @@
 		<xsl:text>ead.rng"</xsl:text>
 		<xsl:text> type="xml"</xsl:text>
 	</xsl:variable>
+	
+	<xsl:variable name="rng-model">
+		<xsl:text>href=</xsl:text>
+		<xsl:value-of select="concat( '&quot;', $schemaPath, 'ead-ext.rng&quot;' )" />
+		<xsl:text>
+		type="application/xml" 
+		schematypens="http://relaxng.org/ns/structure/1.0" 
+		title="extended EAD relaxng schema" </xsl:text>
+	</xsl:variable>
 
 	<xsl:variable name="xlink_ns">
 		<xsl:text>http://www.w3.org/1999/xlink</xsl:text>
@@ -123,12 +130,13 @@
 	<xsl:strip-space elements="*"/>
 
 	<xsl:template match="/">
+		<xsl:text>&#xA;</xsl:text>
+		<xsl:comment>Converted with dtd2schema.vh.xsl </xsl:comment>
 		<xsl:if test="$schema='RNG'">
 			<xsl:text>&#xA;</xsl:text>
-			<xsl:processing-instruction name="oxygen">
-				<xsl:value-of select="$oXygen_pi"/>
+			<xsl:processing-instruction name="xml-model">
+				<xsl:value-of select="$rng-model"/>
 			</xsl:processing-instruction>
-			<xsl:text>&#xA;</xsl:text>
 		</xsl:if>
 		<xsl:apply-templates select="*|comment()|processing-instruction()"/>
 	</xsl:template>
