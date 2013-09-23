@@ -75,6 +75,7 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xtf="http://cdlib.org/xtf"
 	xmlns="urn:isbn:1-931666-22-9"
 	exclude-result-prefixes="xsi">
 
@@ -362,7 +363,7 @@
 				<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="{$xiaddress}" />				
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:copy><xsl:apply-templates  select="@*|*" /></xsl:copy>
+				<xsl:element name="{name()}"><xsl:apply-templates  select="@*|*" /></xsl:element>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -374,21 +375,21 @@
 				<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  href="{$xicontact}" />				
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:copy><xsl:apply-templates  select="@*|*" /></xsl:copy>
+				<xsl:element name="{name()}"><xsl:apply-templates  select="@*|*" /></xsl:element>
 			</xsl:otherwise>
 		</xsl:choose>		
 	</xsl:template>
 	
 
 	<xsl:template match="/ead/eadheader/filedesc/titlestmt">
-		<xsl:copy>
+		<xsl:element name="{name()}">
 		<xsl:apply-templates select="@*|*" />
 		<xsl:if test="not(sponsor) and $sponsor" >
 			<xsl:element name="sponsor">
 				<xsl:value-of select="$sponsor"/>		
 			</xsl:element>
 		</xsl:if>
-		</xsl:copy>
+		</xsl:element>
 	</xsl:template>
 
 </xsl:stylesheet>
