@@ -127,6 +127,12 @@
 		<xsl:text>http://www.w3.org/1999/xlink</xsl:text>
 	</xsl:variable>
 
+
+	<xsl:variable name="sponsor">
+		<xsl:value-of select='/ead/frontmatter/titlepage/list[@type="deflist"]/defitem[contains(label,"Funding")]/item'/>
+	</xsl:variable>
+
+
 	<xsl:strip-space elements="*"/>
 
 	<xsl:template match="/">
@@ -373,5 +379,16 @@
 		</xsl:choose>		
 	</xsl:template>
 	
+
+	<xsl:template match="/ead/eadheader/filedesc/titlestmt">
+		<xsl:copy>
+		<xsl:apply-templates select="@*|*" />
+		<xsl:if test="not(sponsor) and $sponsor" >
+			<xsl:element name="sponsor">
+				<xsl:value-of select="$sponsor"/>		
+			</xsl:element>
+		</xsl:if>
+		</xsl:copy>
+	</xsl:template>
 
 </xsl:stylesheet>
