@@ -130,20 +130,19 @@
 
 
 	<xsl:variable name="sponsor">
-		<xsl:value-of select='/ead/frontmatter/titlepage/list[@type="deflist"]/defitem[contains(label,"Funding")]/item'/>
+		<xsl:value-of select='(/ead/frontmatter/titlepage/list[@type="deflist"]/defitem[contains(label,"Funding")]/item)|(/ead/eadheader/filedesc/publicationstmt/p[@id="sponsor"])'/>
 	</xsl:variable>
 
 
 	<xsl:strip-space elements="*"/>
 
 	<xsl:template match="/">
-		<xsl:text>&#xA;</xsl:text>
 		<xsl:comment>Converted with dtd2schema.vh.xsl </xsl:comment>
 		<xsl:if test="$schema='RNG'">
-			<xsl:text>&#xA;</xsl:text>
 			<xsl:processing-instruction name="xml-model">
 				<xsl:value-of select="$rng-model"/>
 			</xsl:processing-instruction>
+			<xsl:text>&#x0a;</xsl:text>
 		</xsl:if>
 		<xsl:apply-templates select="*|comment()|processing-instruction()"/>
 	</xsl:template>
@@ -204,7 +203,10 @@
 	</xsl:template>
 
 	<!-- don't copy old stylesheet! VIVA/VHP: sdm7g -->
-	<xsl:template match="processing-instruction('xml-stylesheet')" /> 
+	<xsl:template match="processing-instruction('xml-stylesheet')" />
+	
+	<!-- don't duplicate xml-model PI : sdm7g -->
+	<xsl:template match="processing-instruction('xml-model')" />
 
 	<!--========== XLINK ==========-->
 
@@ -384,7 +386,7 @@
 	<xsl:template match="/ead/eadheader/filedesc/titlestmt">
 		<xsl:element name="{name()}">
 		<xsl:apply-templates select="@*|*" />
-		<xsl:if test="not(sponsor) and $sponsor" >
+			<xsl:if test="not(sponsor) and $sponsor and ( string-length($sponsor) != 0 )" >
 			<xsl:element name="sponsor">
 				<xsl:value-of select="$sponsor"/>		
 			</xsl:element>
