@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # path to the schema xsl file:
-XSL=/Users/sdm7g/Projects/VHP/VA-Heritage/ead-schema/dtd2schema.vh.xsl
+XSL=/projects/VA-Heritage/ead-schema/dtd2schema.vh.xsl
 
 # output files destination path:
 OUTBASE=/projects/pub-schema
