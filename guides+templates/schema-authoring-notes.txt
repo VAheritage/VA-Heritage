@@ -1,0 +1,83 @@
+
+The first line of the file should be the xml declaration.
+If you don't declare a character encoding, UTF-8 is the default.
+
+<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8"?>
+
+UTF-8 is recommended, but if you are using a different character set,
+you should label it correctly, or you will get encoding errors on 
+upload and validation or from webapp display.  
+
+If you are cutting and pasting from MS-Word on Windows, you may be 
+using the default Windows character set. If you see encoding errors,
+you might try this declaration instead:
+
+<?xml version="1.0" encoding="windows-1252"?>
+
+[ Note: some maintenance scripts and stylesheets may convert the  
+  encoding on uploaded files back to the default UTF-8. ] 
+  
+
+You should no longer include the  <?xml-stylesheet ?>  processing instruction. 
+( The old stylesheets no longer work on the new files, and the new XSLT 2.0
+  stylesheets are not supported by web browsers. ) 
+
+
+You should include the <?xml-model ?> processing instruction below:
+
+<?xml-model href="http://text.lib.virginia.edu/dtd/eadVIVA/ead-ext.rng"
+		type="application/xml" 
+		schematypens="http://relaxng.org/ns/structure/1.0" 
+		title="extended EAD relaxng schema" ?>
+
+
+
+
+NO <!DOCTYPE 
+
+
+# default ead namespace + xlink namespace + (optionally) xinclude namespace:
+<ead xmlns="urn:isbn:1-931666-22-9" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" 
+	xmlns:xi="http://www.w3.org/2001/XInclude" id="^%eadid%">
+	
+
+/ead/eadheader/eadid: 
+
+@countrycode="US"
+@mainagencycode="US-..."
+
+	http://www.loc.gov/marc/organizations/org-search.php?submit=Search&stateID=48
+
+
+xlink attributes
+
+
+dates
+
+
+
+
+Instead of following /ead/eadheader/filedesc/publicationstmt/publisher
+with the &address; external entity reference, use an xinclude statement:
+
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  
+href="http://ead.lib.virginia.edu/vivaead/add_con/uva-sc_address.xi.xml" />
+<!-- Change to match your institution -->
+
+or else include the <address> block inline. 
+
+Because of namespaces, the 
+
+
+We are no longer using the contact information in the <frontmatter> following /ead/frontmatter/titlepage/publisher
+&contact;
+
+
+The logo statement should be changed to an <extprt> with xlink attributes:
+
+<p id="logostmt">
+<extptr xlink:actuate="onLoad" xlink:show="embed" xlink:type="simple" 
+	xlink:href="http://ead.lib.virginia.edu/vivaead/logos/uva-sc.jpg"/>
+<!-- Change to match your institution -->
