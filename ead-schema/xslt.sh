@@ -1,7 +1,8 @@
 #!/bin/sh
+HERE=$(dirname $0)
 
 # path to the schema xsl file:
-XSL=/projects/VA-Heritage/ead-schema/dtd2schema.vh.xsl
+XSL=$HERE/dtd2schema.vh.xsl
 
 # output files destination path:
 OUTBASE=/projects/pub-schema
