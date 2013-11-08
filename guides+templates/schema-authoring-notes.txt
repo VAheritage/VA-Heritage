@@ -31,32 +31,70 @@ You should include the <?xml-model ?> processing instruction below:
 		schematypens="http://relaxng.org/ns/structure/1.0" 
 		title="extended EAD relaxng schema" ?>
 
+href="http://text.lib.virginia.edu/dtd/eadVIVA/ead-ext.rng" 
+is the RELAXNG schema that we use for validation of uploaded files. 
+It is an extension of the standard EAD RELAXNG schema to allow
+the xsi:schemaLocation attribute, so that files written to conform
+to the W3C schema will also validate, and allow xml:base attributes,
+which may sometimes be added by XInclude expansion. 
+
+You may use the standard EAD schemas from the Library of Congress site
+( http://www.loc.gov/ead/ead.rng or http://www.loc.gov/ead/ead.xsd  )
+or you may use a local copy. You can also have multiple xml-model
+processing instructions with alternative schemas. The interpretation
+of multiple xml-model statements is not defined. Currently, the 
+Oxygen XML editor will attempt to validate against all of the listed
+schemas. 
+
+
+Do not include a  "<!DOCTYPE " statement or an internal DTD subset. 
+
+We no longer use entity references for external URLs. 
+Use xlink hrefs instead. 
+
+We no longer use external parsed entities for boilerplate inclusions.
+Use XInclude instead. 
 
 
 
-NO <!DOCTYPE 
 
+Declare the default namespace declaration in the root <ead> element.
+You should also declare the xlink namespace in the root element: 
+it saves you from having to repeatedly declare it locally in the
+elements that include xlinks. 
+You may also declare the XInclude namespace in the root element. 
 
-# default ead namespace + xlink namespace + (optionally) xinclude namespace:
 <ead xmlns="urn:isbn:1-931666-22-9" 
 	xmlns:xlink="http://www.w3.org/1999/xlink" 
 	xmlns:xi="http://www.w3.org/2001/XInclude" id="^%eadid%">
 	
 
-/ead/eadheader/eadid: 
+In /ead/eadheader/eadid: 
 
-@countrycode="US"
-@mainagencycode="US-..."
+The value of @countrycode attributes should be capitalized:
+    countrycode="US"
+@mainagencycodes should also be prefixed with the countrycode and a hyphen:
+	mainagencycode="US-ViU"
+If you use the @repositorycode in the eadheader, it should also be prefixed
+with the countrycode. 
 
-	http://www.loc.gov/marc/organizations/org-search.php?submit=Search&stateID=48
+Note: New institutions can look up there agencycodes here:
+	http://www.loc.gov/marc/organizations/org-search.php?submit=Search&stateID=48 
+
 
 
 xlink attributes
 
 
-dates
+Dates:
 
-
+Normal attributes in date fields can no longer be 6 digits - 
+they must be of one of these formats:
+	yyyymmdd
+	yyyy
+	yyyymmdd/yyyymmdd
+	yyyy/yyyy
+The "day" portion cannot be "00". I.e., 20090200 is not valid but 20090201 is. 
 
 
 Instead of following /ead/eadheader/filedesc/publicationstmt/publisher
