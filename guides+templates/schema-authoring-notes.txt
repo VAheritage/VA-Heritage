@@ -82,8 +82,20 @@ Note: New institutions can look up there agencycodes here:
 	http://www.loc.gov/marc/organizations/org-search.php?submit=Search&stateID=48 
 
 
+Instead of following /ead/eadheader/filedesc/publicationstmt/publisher
+with the &address; external entity reference, use an xinclude statement:
 
-xlink attributes
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  
+href="http://ead.lib.virginia.edu/vivaead/add_con/uva-sc_address.xi.xml" />
+
+Change the href to point to the xinclude file for your institution. 
+Versions of the include files with namespace declarations 
+
+or else include the <address> block inline. 
+
+
+
+Xlink attributes  [ need to search out all of the substitutions here ] 
 
 
 Dates:
@@ -97,16 +109,7 @@ they must be of one of these formats:
 The "day" portion cannot be "00". I.e., 20090200 is not valid but 20090201 is. 
 
 
-Instead of following /ead/eadheader/filedesc/publicationstmt/publisher
-with the &address; external entity reference, use an xinclude statement:
 
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"  
-href="http://ead.lib.virginia.edu/vivaead/add_con/uva-sc_address.xi.xml" />
-<!-- Change to match your institution -->
-
-or else include the <address> block inline. 
-
-Because of namespaces, the 
 
 
 We are no longer using the contact information in the <frontmatter> following /ead/frontmatter/titlepage/publisher
@@ -119,3 +122,10 @@ The logo statement should be changed to an <extprt> with xlink attributes:
 <extptr xlink:actuate="onLoad" xlink:show="embed" xlink:type="simple" 
 	xlink:href="http://ead.lib.virginia.edu/vivaead/logos/uva-sc.jpg"/>
 <!-- Change to match your institution -->
+
+
+
+
+<sponsor>
+
+
