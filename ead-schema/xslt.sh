@@ -32,25 +32,31 @@ do
 	done
 	if ! $NOXINCL 
 	then
-	if [ -e ${ADD_CON}/${XDIR}_contact.xml ]  
-	then INST="--stringparam inst $XDIR "
-	echo "XInclude:  $INST"
-	fi
+	  if [ -e ${ADD_CON}/${XDIR}_contact.xml ]  
+	  then INST="--stringparam inst $XDIR "
+	  echo "XInclude:  $INST"
+	  fi
 	fi
 
-	if head $XML | egrep '<!DOCTYPE .+dtd' 
+		
+	if head $XML | grep 'urn:isbn:1-931666-22-9' 
 	then
+
+	  # already schema based -- just copy to OUT
+	  cp -v $XML $OUT
 	
-    if xsltproc  --output $OUT $INST $XSL  $XML
-       then
+	elif  head $XML | egrep '<!DOCTYPE '
+    then
+	
+      if xsltproc  --output $OUT $INST $XSL  $XML
+      then
        	echo "# xsltproc --output $OUT $INST $XSL $XML" 
-    else 
+      else 
          echo "# xsltproc error - fallback xalan: -IN $XML -XSL $XSL -OUT $OUT ${INST/--stringparam/-PARAM} " 
          java -jar $XALAN  -IN $XML -XSL $XSL -OUT $OUT ${INST/--stringparam/-PARAM} 
-    fi
-    
-	else
-	# already schema based -- just copy to OUT
-	cp -v $XML $OUT
+      fi
+
+	else 
+    	echo '# BADERROR: no <!DOCTYPE and no NAMESPACE' 
 	fi
 done 2>&1 
