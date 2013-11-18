@@ -120,7 +120,23 @@ The logo statement should be changed to an <extprt> with xlink attributes:
 <!-- Change to match your institution -->
 
 
-Xlink attributes  [ need to search out all of the substitutions here ] 
+Linking Attributes: 
+ All other @entityref attributes, in <dao>, <extptr> or any other elements
+should be changed to xlink:href attributes, and the xlink namespace should
+be declared locally if it has not already been declared in the top root element. 
+
+
+The following attributes in the <extpr> or <dao> elements must have the "xlink:" prepended to them:
+
+	actuate
+	arcrole
+	from
+	href 
+	label
+	
+	linktype  should be changed to xlink:type="value" 
+	most of the time, the value should be "simple" 
+	
 
 
 Dates:
