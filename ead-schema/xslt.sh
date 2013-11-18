@@ -16,6 +16,9 @@ ADD_CON=/projects/vivaead/add_con
 # below are the exceptions that use a different include file from the default.
 NOTX="lva/vi01901.xml lva/vi01902.xml wm/viw00110.xml"
 
+DATE="--stringparam date $(date +%F)"
+
+
 for XML in $*
 do
 	XDIR=$(basename $(dirname $XML ))
@@ -48,12 +51,12 @@ do
 	elif  head $XML | egrep '<!DOCTYPE '
     then
 	
-      if xsltproc  --output $OUT $INST $XSL  $XML
+      if xsltproc  --output $OUT $INST $DATE $XSL  $XML
       then
-       	echo "# xsltproc --output $OUT $INST $XSL $XML" 
+       	echo "# xsltproc --output $OUT $INST $DATE $XSL $XML" 
       else 
-         echo "# xsltproc error - fallback xalan: -IN $XML -XSL $XSL -OUT $OUT ${INST/--stringparam/-PARAM} " 
-         java -jar $XALAN  -IN $XML -XSL $XSL -OUT $OUT ${INST/--stringparam/-PARAM} 
+         echo "# xsltproc error - fallback xalan: -IN $XML -XSL $XSL -OUT $OUT ${INST/--stringparam/-PARAM} ${DATE/--stringparam/-PARAM}" 
+         java -jar $XALAN  -IN $XML -XSL $XSL -OUT $OUT ${INST/--stringparam/-PARAM} ${DATE/--stringparam/-PARAM}
       fi
 
 	else 

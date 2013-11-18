@@ -95,6 +95,31 @@ or else include the <address> block inline.
 
 
 
+We are no longer using the contact information in the <frontmatter> 
+following /ead/frontmatter/titlepage/publisher in the display. 
+But whether you include this information or not, you should not
+be using either the &address; or &contact; external entities. 
+If you with to include this information, you can use XInclude
+( href="http://ead.lib.virginia.edu/vivaead/add_con/inst_contact.xi.xml" ) 
+as above, or include the information inline. 
+
+The previous Best Practice Guide suggested including sponsor information
+in a paragraph following the contact info in the <frontmatter><titlepage>. 
+Since we are no longer using that info in the display, you should instead
+use a <sponsor> element within /ead/eadheader/filedesc/titlestmt. 
+
+The institution logo is one element from the <frontmatter><titlepage>
+we are still using in the display. However, as noted above, we are no
+longer using external entities. 
+
+The logo statement should be changed to an <extprt> with xlink attributes:
+
+<p id="logostmt">
+<extptr xlink:actuate="onLoad" xlink:show="embed" xlink:type="simple" 
+	xlink:href="http://ead.lib.virginia.edu/vivaead/logos/uva-sc.jpg"/>
+<!-- Change to match your institution -->
+
+
 Xlink attributes  [ need to search out all of the substitutions here ] 
 
 
@@ -112,20 +137,6 @@ The "day" portion cannot be "00". I.e., 20090200 is not valid but 20090201 is.
 
 
 
-We are no longer using the contact information in the <frontmatter> following /ead/frontmatter/titlepage/publisher
-&contact;
 
-
-The logo statement should be changed to an <extprt> with xlink attributes:
-
-<p id="logostmt">
-<extptr xlink:actuate="onLoad" xlink:show="embed" xlink:type="simple" 
-	xlink:href="http://ead.lib.virginia.edu/vivaead/logos/uva-sc.jpg"/>
-<!-- Change to match your institution -->
-
-
-
-
-<sponsor>
 
 

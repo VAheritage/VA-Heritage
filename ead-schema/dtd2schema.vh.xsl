@@ -85,7 +85,8 @@
 	<!-- Resulting document: W3C ready? Or RNG (Oxygent) ready? -->
 
 	<xsl:param name="schema">RNG</xsl:param>		<!-- Alternatives RNG or W3C-->
-	
+
+	<xsl:param name="date" ></xsl:param>
 
 	<!-- Path to schema -->
 
@@ -391,6 +392,39 @@
 				<xsl:value-of select="$sponsor"/>		
 			</xsl:element>
 		</xsl:if>
+		</xsl:element>
+	</xsl:template>
+
+
+	<xsl:template match="/ead/eadheader">
+		<xsl:element name="{name()}">
+			<xsl:apply-templates select="@*|*" />
+			<xsl:if test="not(revisiondesc)">
+				<xsl:element name="revisiondesc">
+					<xsl:element name="change">
+						<xsl:element name="date">
+							<xsl:if test="string($date) != ''">
+								<xsl:attribute name="normal"><xsl:value-of select="$date"/></xsl:attribute>
+							</xsl:if>
+							<xsl:value-of select="$date"/></xsl:element>
+						<xsl:element name="item">Converted to schema conforming EAD by dtd2schema.vh.xsl.</xsl:element>
+					</xsl:element>					
+				</xsl:element>
+			</xsl:if>
+		</xsl:element>
+	</xsl:template>
+
+	<xsl:template match="/ead/eadheader/revisiondesc">
+		<xsl:element name="{name()}">
+			<xsl:apply-templates select="@*|*" />
+			<xsl:element name="change">
+				<xsl:element name="date">
+					<xsl:if test="string($date) != ''">
+						<xsl:attribute name="normal"><xsl:value-of select="$date"/></xsl:attribute>
+					</xsl:if>
+					<xsl:value-of select="$date"/></xsl:element>
+				<xsl:element name="item">Converted to schema conforming EAD by dtd2schema.vh.xsl.</xsl:element>
+			</xsl:element>
 		</xsl:element>
 	</xsl:template>
 
