@@ -48,7 +48,7 @@ do
 	  # already schema based -- just copy to OUT
 	  cp -v $XML $OUT
 	
-	elif  head $XML | egrep '<!DOCTYPE '
+	elif  head $XML | egrep '<!DOCTYPE'
     then
 	
       if xsltproc  --output $OUT $INST $DATE $XSL  $XML
