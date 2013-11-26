@@ -141,7 +141,7 @@ H="<eadheader> and <frontmatter>"
 ^!Set %eadid%=vircuh^?[(T=C)Vircuh number, just add number:]; %findaidstatus%=^?[(T=C)Finding Aid Status:==_edited-partial-draft|edited-full-draft|unverified-full-draft|unverified-partial-draft]; %titleproper%=^?[(T=C)A Guide to the (complete titleproper of finding aid) <titleproper>:]; %dates%=^?[(T=C)Dates of collection or papers <date>:]; %titlepropersorttitle%=^?[(T=C)"Sort" title goes here <subtitle>:]; %collectionnumbertype%=^?[(T=C)Accession number or Collection number?==_Accession number|Collection number]; %collectionnumber%=^?[(T=C)Collection number WITHOUT LABEL goes here <num>:]; %author%=^?[(T=C)Author of finding aid <author>:]; %encoder%=^?[(T=C)Encoder of finding aid:]; %encodeddate%=^?[(T=C)Date finding aid encoded (i.e. 14 January 2006):]; %processor%=^?[(T=C)Processor of collection or papers:]; %derivedfrom%=^?[(T=C)EAD finding aid derived from:==_MARC record|MS Word|Database|being created directly into EAD]; %copyrightdate%=^?[(T=C)Year of publication (of finding aid) R:]
 
 <?xml version="1.0"?>
-<?xml-model href="http://www.loc.gov/ead/ead.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://text.lib.virginia.edu/dtd/eadVIVA/ead-ext.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0" title="extended EAD relaxng schema" ?>
 <ead xmlns="urn:isbn:1-931666-22-9" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" id="^%eadid%">
 <eadheader audience="internal" langencoding="iso639-2b" findaidstatus="^%findaidstatus%">
 <!-- Change below to match your institution's ead information -->
