@@ -231,7 +231,7 @@ H="Descriptive Summary"
 </unitid>
 <physloc label="^%physloclabel%">^%physloc%
 </physloc>
-<physdesc label="Physical Characteristics" encodinganalog="300$a">^%physdesc%.
+<physdesc label="^%physdesclabel%" encodinganalog="300$a"><extent>^%physdesc%</extent>.
 </physdesc>
 <langmaterial label="Language">
 <language langcode="eng">English
@@ -667,7 +667,7 @@ H="8B. <c01>"
 </physloc>
 <container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
 </container>
-<physdesc>^?[physical description if nec.]
+<physdesc><extent>^?[physical description if nec.]</extent>
 </physdesc>
 </did>
 <scopecontent>
@@ -696,7 +696,7 @@ H="8C. <c02>"
 	</physloc>
 	<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
 	</container>
-	<physdesc>^?[physical description if nec.]
+	<physdesc><extent>^?[physical description if nec.]</extent>
 	</physdesc>
 	</did>
 	<scopecontent>
@@ -725,7 +725,7 @@ H="8D. <c03>"
 		</physloc>
 		<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
                 </container>
-		<physdesc>^?[physical description: # of items/ folders etc.]
+		<physdesc><extent>^?[physical description: # of items/ folders etc.]</extent>
 		</physdesc>
 		</did>
 		<scopecontent>
@@ -754,7 +754,7 @@ H="8E. <c04>"
 			</physloc>
 			<container label="^?[Container LABEL=_Box|Folder|Box-folder|Reel|Frame|Oversize|Reel-frame|Volume|Map-case|Carton|Page|Folio|Sleeve|Drawer|Other]" type="^?[Container type, no numbers=_box|folder|box-folder|reel|frame|oversize|reel-frame|volume|map-case|carton|page|folio|sleeve|drawer|othertype]">^?[Container number goes here]
                         </container>
-			<physdesc>^?[physical description: # of items/ folders etc.]
+			<physdesc><extent>^?[physical description: # of items/ folders etc.]</extent>
 			</physdesc>
 			</did>
 			<scopecontent>
