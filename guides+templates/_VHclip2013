@@ -180,7 +180,7 @@ H="<eadheader> and <frontmatter>"
 <titleproper>A Guide to the ^%titleproper%, <date>^%dates%</date>
 </titleproper>
 <subtitle>A Collection in <lb/><!-- Add your institution's name -->
-<num type="Accession Number">^%collectionnumber%
+<num type="^%collectionnumbertype%">^%collectionnumber%
 </num>
 </subtitle>
 <author>^%author%
@@ -227,7 +227,7 @@ H="Descriptive Summary"
 <unitdate type="^%datetype%" label="Date" encodinganalog="245$f">^%dates%
 </unitdate>
 </unittitle>
-<unitid label="%collectionnumbertype%" encodinganalog="099$a">^%collectionnumber%
+<unitid label="%^collectionnumbertype%" encodinganalog="099$a">^%collectionnumber%
 </unitid>
 <physloc label="^%physloclabel%">^%physloc%
 </physloc>
