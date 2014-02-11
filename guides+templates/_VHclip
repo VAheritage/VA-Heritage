@@ -514,14 +514,14 @@ H="<index> head"
 H="Single <ref> element for <name> element"
 <indexentry>
 <name>^?[Enter name here]</name>
-<ref>^?[Enter text for reference element here (i.e. Box 1, Folder 3)]</ref>
+<ref xlink:type="simple">^?[Enter text for reference element here (i.e. Box 1, Folder 3)]</ref>
 </indexentry>
 
 
 H="Single <ref> element for <subject> element"
 <indexentry>
 <subject>^?[Enter subject here]</subject>
-<ref>^?[Enter text for reference element here (i.e. Box 3, Folder 10)]</ref>
+<ref xlink:type="simple">^?[Enter text for reference element here (i.e. Box 3, Folder 10)]</ref>
 </subject>
 
 
@@ -529,8 +529,8 @@ H="Multiple <ref> elements for <name> element"
 <indexentry>
 <name>^?[Enter name here]</name>
 <ptrgrp>
-<ref>^?[Enter text for 1st reference element here (i.e. Box 3, Folder 5)]</ref>
-<ref>^?[Enter text for 2nd reference element here (i.e. Box 6, Folder 9)]</ref>
+<ref xlink:type="simple">^?[Enter text for 1st reference element here (i.e. Box 3, Folder 5)]</ref>
+<ref xlink:type="simple">^?[Enter text for 2nd reference element here (i.e. Box 6, Folder 9)]</ref>
 </ptrgrp>
 </indexentry>
 
@@ -539,14 +539,14 @@ H="Multiple <ref> elements for <subject> element"
 <indexentry>
 <subject>^?[Enter subject here]</subject>
 <ptrgrp>
-<ref>^?[Enter text for 1st reference element here (i.e. Box 3, Folder 5)]</ref>
-<ref>^?[Enter text for 2nd reference element here (i.e. Box 6, Folder 9)]</ref>
+<ref xlink:type="simple">^?[Enter text for 1st reference element here (i.e. Box 3, Folder 5)]</ref>
+<ref xlink:type="simple">^?[Enter text for 2nd reference element here (i.e. Box 6, Folder 9)]</ref>
 </ptrgrp>
 </indexentry>
 
 
 H="Additional <ref> elements"
-<ref>^?[Enter text for reference element here (i.e. Box 10, Folder 12)]</ref>
+<ref xlink:type="simple">^?[Enter text for reference element here (i.e. Box 10, Folder 12)]</ref>
 
 
 H="Close <index>"
