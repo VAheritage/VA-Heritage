@@ -788,7 +788,7 @@ H=";REVISION DESCRIPTION"
 An optional subelement of the <eadheader> used to record information about significant changes or alterations that have been made to the encoded finding aid.  ELEMENT MUST BE	PLACED BETWEEN THE </PROFILEDESC> TAG AND THE </EADHEADER> TAG IN THE <EADHEADER> SECTION.
 
 H="<revisiondesc>"
-<revisiondesc>
+<revisiondesc audience="^?[audience=internal|external]">
          <change>
             <date>^?[Type date of revision here]</date>
             <item>^?[Type description of revision here]</item>
