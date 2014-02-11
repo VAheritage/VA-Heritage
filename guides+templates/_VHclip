@@ -183,8 +183,6 @@ H="<eadheader> and <frontmatter>"
 <num type="^%collectionnumbertype%">^%collectionnumber%
 </num>
 </subtitle>
-<author>^%author%
-</author>
 <p id="logostmt">
 <!-- Change for your institutions logo -->
 <extptr xlink:actuate="onLoad" xlink:show="embed" xlink:type="simple" xlink:href="http://ead.lib.virginia.edu/vivaead/logos/vcu.jpg"/>
