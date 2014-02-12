@@ -211,7 +211,7 @@ Upper level <did>.  Overview of Collection
 
 H="Descriptive Summary"
 
-^!Set %datetype%=^?[(T=C)Inclusive or Bulk?==_inclusive|bulk]; %physloclabel%=^?[(T=C)Physical Location Label?==_Location|Shelf Location|Storage Location]; %physloc%=^?[(T=C)Physical Location Text <physloc> (Must start with integer) NR:];%physdesclabel%=^?[(T=C)Physical Description Label?==_Physical Characteristics|Extent|Size|Physical Description]; %physdesc%=^?[(T=C)Extent or volume of collection <physdesc> R:]; %abstract%=^?[(T=C)Abstract <abstract> NR:]; %originationlabel%=^?[(T=C)Creator or Collector?==_Creator|Collector]; %originationencodinganalog%=^?[(T=C)MARC Encoding Analog (100 or 110) for Creator or Collector?==_100$a|110$a]; %origination%=^?[(T=C)Creator or collector of collection <origination> NR:]
+^!Set %datetype%=^?[(T=C)Inclusive or Bulk?==_inclusive|bulk]; %physloclabel%=^?[(T=C)Physical Location Label?==_Location|Shelf Location|Storage Location]; %physloc%=^?[(T=C)Physical Location Text <physloc> NR:];%physdesclabel%=^?[(T=C)Physical Description (Must start with integer) Label?==_Physical Characteristics|Extent|Size|Physical Description]; %physdesc%=^?[(T=C)Extent or volume of collection <physdesc> R:]; %abstract%=^?[(T=C)Abstract <abstract> NR:]; %originationlabel%=^?[(T=C)Creator or Collector?==_Creator|Collector]; %originationencodinganalog%=^?[(T=C)MARC Encoding Analog (100 or 110) for Creator or Collector?==_100$a|110$a]; %origination%=^?[(T=C)Creator or collector of collection <origination> NR:]
 
 <archdesc level="collection">
 <runner placement="footer"><!-- Add your institution's name -->
