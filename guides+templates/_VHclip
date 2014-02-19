@@ -225,7 +225,7 @@ H="Descriptive Summary"
 <unitdate type="^%datetype%" label="Date" encodinganalog="245$f">^%dates%
 </unitdate>
 </unittitle>
-<unitid label="%^collectionnumbertype%" encodinganalog="099$a">^%collectionnumber%
+<unitid label="^%collectionnumbertype%" encodinganalog="099$a">^%collectionnumber%
 </unitid>
 <physloc label="^%physloclabel%">^%physloc%
 </physloc>
