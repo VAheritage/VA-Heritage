@@ -138,7 +138,7 @@ H=";1. <EADHEADER> AND <FRONTMATTER>"
 
 H="<eadheader> and <frontmatter>"
 
-^!Set %eadid%=vircuh^?[(T=C)Vircuh number, just add number:]; %findaidstatus%=^?[(T=C)Finding Aid Status:==_edited-partial-draft|edited-full-draft|unverified-full-draft|unverified-partial-draft]; %titleproper%=^?[(T=C)A Guide to the (complete titleproper of finding aid) <titleproper>:]; %dates%=^?[(T=C)Dates of collection or papers <date>:]; %titlepropersorttitle%=^?[(T=C)"Sort" title goes here <subtitle>:]; %collectionnumbertype%=^?[(T=C)Accession number or Collection number?==_Accession number|Collection number]; %collectionnumber%=^?[(T=C)Collection number WITHOUT LABEL goes here <num>:]; %author%=^?[(T=C)Author of finding aid <author>:]; %encoder%=^?[(T=C)Encoder of finding aid:]; %encodeddate%=^?[(T=C)Date finding aid encoded (i.e. 14 January 2006):]; %processor%=^?[(T=C)Processor of collection or papers:]; %derivedfrom%=^?[(T=C)EAD finding aid derived from:==_MARC record|MS Word|Database|being created directly into EAD]; %copyrightdate%=^?[(T=C)Year of publication (of finding aid) R:]
+^!Set %eadid%=vircuh^?[(T=C)Vircuh number, just add number:]; %findaidstatus%=^?[(T=C)Finding Aid Status:==_edited-partial-draft|edited-full-draft|unverified-full-draft|unverified-partial-draft]; %titleproper%=^?[(T=C)A Guide to the (complete titleproper of finding aid) <titleproper>:]; %dates%=^?[(T=C)Dates of collection or papers <date>:]; %datetype%=^?[(T=C)Inclusive or Bulk?==_inclusive|bulk]; %titlepropersorttitle%=^?[(T=C)"Sort" title goes here <subtitle>:]; %collectionnumbertype%=^?[(T=C)Accession number or Collection number?==_Accession number|Collection number]; %collectionnumber%=^?[(T=C)Collection number WITHOUT LABEL goes here <num>:]; %author%=^?[(T=C)Author of finding aid <author>:]; %encoder%=^?[(T=C)Encoder of finding aid:]; %encodeddate%=^?[(T=C)Date finding aid encoded (i.e. 14 January 2006):]; %processor%=^?[(T=C)Processor of collection or papers:]; %derivedfrom%=^?[(T=C)EAD finding aid derived from:==_MARC record|MS Word|Database|being created directly into EAD]; %copyrightdate%=^?[(T=C)Year of publication (of finding aid) R:]
 
 <?xml version="1.0"?>
 <!--Change Vircuh to match your repository-->
@@ -213,7 +213,7 @@ Upper level <did>.  Overview of Collection
 
 H="Descriptive Summary"
 
-^!Set %datetype%=^?[(T=C)Inclusive or Bulk?==_inclusive|bulk]; %physloclabel%=^?[(T=C)Physical Location Label?==_Location|Shelf Location|Storage Location]; %physloc%=^?[(T=C)Physical Location Text <physloc> NR:];%physdesclabel%=^?[(T=C)Physical Description (Must start with integer) Label?==_Physical Characteristics|Extent|Size|Physical Description]; %physdesc%=^?[(T=C)Extent or volume of collection <physdesc> R:]; %abstract%=^?[(T=C)Abstract <abstract> NR:]; %originationlabel%=^?[(T=C)Creator or Collector?==_Creator|Collector]; %originationencodinganalog%=^?[(T=C)MARC Encoding Analog (100 or 110) for Creator or Collector?==_100$a|110$a]; %origination%=^?[(T=C)Creator or collector of collection <origination> NR:]
+^!Set %physloclabel%=^?[(T=C)Physical Location Label?==_Location|Shelf Location|Storage Location]; %physloc%=^?[(T=C)Physical Location Text <physloc> NR:];%physdesclabel%=^?[(T=C)Physical Description (Must start with integer) Label?==_Physical Characteristics|Extent|Size|Physical Description]; %physdesc%=^?[(T=C)Extent or volume of collection <physdesc> R:]; %abstract%=^?[(T=C)Abstract <abstract> NR:]; %originationlabel%=^?[(T=C)Creator or Collector?==_Creator|Collector]; %originationencodinganalog%=^?[(T=C)MARC Encoding Analog (100 or 110) for Creator or Collector?==_100$a|110$a]; %origination%=^?[(T=C)Creator or collector of collection <origination> NR:]
 
 <archdesc level="collection">
 <runner placement="footer"><!-- Add your institution's name -->
@@ -272,7 +272,7 @@ H="<descgrp type="admininfo">"
 <prefercite encodinganalog="524$a">
 <head>Preferred Citation
 </head>
-<p>^%prefercite% ^%title%, Accession # ^%collectionnumber%, <!-- Add your institution's citation information -->
+<p>^%prefercite% ^%titleproper%, Accession # ^%collectionnumber%, <!-- Add your institution's citation information -->
 </p>
 </prefercite>
 <acqinfo encodinganalog="541$a">
